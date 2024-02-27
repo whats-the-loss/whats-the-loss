@@ -16,6 +16,9 @@ the [openapi-generator](https://openapi-generator.tech/) and included in the pro
 
 ### Prerequisites
 
+The backend requires you to have a valid `GraalVM` for Java 21 installed. You can download it
+from [here](https://www.graalvm.org/). However, it's recommended to use [sdkman](https://sdkman.io) to install it.
+
 To start developing, just run the [docker-compose](docker-compose.yml) file to bring up MongoDB.  
 For development we use normal JVM mode. To start the server in development mode, just run the following command:
 
