@@ -1,5 +1,6 @@
 # What's the Loss?
 
+Do simple ML experiment logging and visualize your data with dashboards.
 This project aims to provide a monitoring framework similar to the one provided
 by [TensorBoard](https://www.tensorflow.org/tensorboard). It consists out of three main components:
 
