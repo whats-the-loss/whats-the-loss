@@ -1,34 +1,139 @@
 openapi: 3.1.0
 info:
-  title: Webhook Example
-  version: 1.0.0
-# Since OAS 3.1.0 the paths element isn't necessary. Now a valid OpenAPI Document can describe only paths, webhooks, or even only reusable components
-webhooks:
-  # Each webhook needs a name
-  newPet:
-    # This is a Path Item Object, the only difference is that the request is initiated by the API provider
+  title: Whats the loss API
+  version: 0.0.1
+
+
+# @todo add notion of users
+
+
+paths:
+  /logging/run:
     post:
+      summary: "Add a run"
       requestBody:
-        description: Information about a new pet in the system
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Pet"
+              $ref: '#/components/schemas/RunProperties'
       responses:
-        "200":
-          description: Return a 200 status to indicate that the data was received successfully
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunId'
+
+    put:
+      summary: "Update a run (its status and configuration)"
+      parameters:
+        - name: run_id
+          in: path
+          schema:
+            $ref: "#/components/schemas/RunId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                run_status:
+                  type: string
+                  enum: [running, crashed, canceled, finished]
+                configuration:
+                  type: object
+                  title: "A json object of configuration values"
+
+  /logging/logValues:
+    post:
+      summary: "Add a new log entry of values, optionally linked to a step value"
+      parameters:
+        - name: run_id
+          in: path
+          schema:
+            $ref: "#/components/schemas/RunId"
+      requestBody:
+        content:
+          # will be protobuf
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/LoggedValues_Full'
+                - $ref: '#/components/schemas/RunId'
+
+  /logging/logMedia:
+    post:
+      summary: "Log a media object (image, video), optionally linked to a step value"
+      parameters:
+        - name: run_id
+          in: path
+          schema:
+            $ref: "#/components/schemas/RunId"
+        - name: key_flattened
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          image/*:
+            schema:
+              type: string
+              format: binary
+          video/*:
+            schema:
+              type: string
+              format: binary
+
+
+
+
+
+
 
 components:
   schemas:
-    Pet:
-      required:
-        - id
-        - name
+    RunProperties:
       properties:
-        id:
-          type: integer
-          format: int64
+        project:
+          type: string
+        experiment:
+          type: string
+        group:
+          type: array
+          items:
+            type: string
         name:
           type: string
-        tag:
+        configuration:
+          type: object
+          title: "A json object of configuration values"
+
+
+
+    RunId:
+      properties:
+        run_id:
           type: string
+          format: uuid
+
+    # this is just to show how the structure of logged values.
+    # for network transfer a compressed version (e.g. no keys) will be used.
+    LoggedValues_Full:
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoggedValues_Full_Value'
+        step:
+          type: integer
+        timestamp:
+          type: string
+          format: date-time
+
+    LoggedValues_Full_Value:
+      properties:
+        key_flattened:
+          type: string
+        value:
+          type:
+            - array
+            - number
+
