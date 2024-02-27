@@ -1,0 +1,12 @@
+[versions]
+coroutines = "1.7.3"
+graalvm = "0.10.1"
+injectTestResources = "0.3.3"
+kotest = "5.8.0"
+kotlin = "1.9.22"
+ktlint = "12.1.0"
+ktor = "2.3.8"
+logback = "1.4.14"
+mockk = "1.13.9"
+mongodb = "4.10.1"
+prometeus = "1.6.3"
