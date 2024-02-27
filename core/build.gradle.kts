@@ -6,6 +6,7 @@ plugins {
     id("org.graalvm.buildtools.native") version libs.versions.graalvm.get()
     id("org.jetbrains.kotlin.plugin.serialization") version libs.versions.kotlin.get()
     id("org.jlleitschuh.gradle.ktlint") version libs.versions.ktlint.get()
+    id("org.openapi.generator") version libs.versions.openapiGenerator.get()
     kotlin("jvm") version libs.versions.kotlin.get()
 }
 
@@ -66,6 +67,8 @@ tasks.withType<Test>().configureEach {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
+    dependsOn("openApiGenerate")
+
     kotlinOptions {
         freeCompilerArgs += listOf("-Xjsr305=strict", "-Xcontext-receivers")
     }
@@ -104,5 +107,29 @@ graalvmNative {
     }
     metadataRepository {
         enabled.set(true)
+    }
+}
+
+openApiGenerate {
+    generatorName = "kotlin"
+    inputSpec = "${projectDir.parent}/api/openapi.yaml"
+    outputDir = layout.buildDirectory.dir("generated").get().asFile.absolutePath
+    skipValidateSpec = true
+    globalProperties = mapOf("models" to "")
+    additionalProperties = mapOf("serializationLibrary" to "kotlinx_serialization")
+    modelPackage = "$group.api.model"
+    generateAliasAsModel = false
+    generateApiDocumentation = false
+    generateApiTests = false
+    generateModelDocumentation = false
+    generateModelTests = false
+}
+
+sourceSets {
+    val main by getting {
+        kotlin {
+            // Include the generated sources directory in the Kotlin source set
+            srcDir(layout.buildDirectory.dir("generated/src/main/kotlin").get().asFile.absolutePath)
+        }
     }
 }
