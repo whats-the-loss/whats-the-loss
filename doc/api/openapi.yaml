@@ -13,13 +13,13 @@ paths:
       summary: "Add a run"
       requestBody:
         content:
-          application/json:
+          application/protobuf:
             schema:
               $ref: '#/components/schemas/RunProperties'
       responses:
         200:
           content:
-            application/json:
+            application/protobuf:
               schema:
                 $ref: '#/components/schemas/RunId'
 
@@ -32,7 +32,7 @@ paths:
             $ref: "#/components/schemas/RunId"
       requestBody:
         content:
-          application/json:
+          application/protobuf:
             schema:
               properties:
                 run_status:
@@ -52,8 +52,7 @@ paths:
             $ref: "#/components/schemas/RunId"
       requestBody:
         content:
-          # will be protobuf
-          application/json:
+          application/protobuf:
             schema:
               allOf:
                 - $ref: '#/components/schemas/LoggedValues_Full'
@@ -105,15 +104,11 @@ components:
         configuration:
           type: object
           title: "A json object of configuration values"
-
-
-
     RunId:
       properties:
         run_id:
           type: string
           format: uuid
-
     # this is just to show how the structure of logged values.
     # for network transfer a compressed version (e.g. no keys) will be used.
     LoggedValues_Full:
@@ -136,4 +131,3 @@ components:
           type:
             - array
             - number
-

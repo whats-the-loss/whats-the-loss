@@ -1,7 +1,8 @@
 # OpenAPI
 
-This is the OpenAPI documentation for interface of the server. It is written
-in [OpenAPI 3.2](https://swagger.io/specification/) and can be used to generate client code for the server.
+This is the OpenAPI documentation for interface of the server. It is written using
+[OpenAPI 3.0.3](https://spec.openapis.org/oas/v3.0.3) and is used to generate client code for the server and model
+classes for the server.
 
 The server supports JSON as well as ProtoBuf as a serialization format. The OpenAPI documentation is written in a way
 that it can be used to generate client code for both formats.
