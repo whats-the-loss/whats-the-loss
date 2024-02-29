@@ -41,6 +41,11 @@ paths:
 
   /logging/run/logSchema:
     put:
+      parameters:
+        - name: run_id
+          in: path
+          schema:
+            $ref: "#/components/schemas/RunId"
       summary: "Update the log schema of a run. This includes the datatypes of logged values and their types."
       requestBody:
         content:

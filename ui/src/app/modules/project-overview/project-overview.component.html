@@ -1,0 +1,10 @@
+
+<h3>
+  {{project_name}}
+</h3>
+
+<ul>
+  @for (experiment of experiments; track experiment.name) {
+    <li>Experiment: <a routerLink="experiment/{{experiment.name}}">{{experiment.name}}</a> </li>
+  }
+</ul>
