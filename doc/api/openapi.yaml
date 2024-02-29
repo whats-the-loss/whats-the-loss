@@ -38,6 +38,16 @@ paths:
                 configuration:
                   type: object
                   title: "A json object of configuration values"
+
+  /logging/run/logSchema:
+    put:
+      summary: "Update the log schema of a run. This includes the datatypes of logged values and their types."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunLogSchema'
+
   /logging/logValues:
     post:
       summary: "Add a new log entry of values, optionally linked to a step value"
@@ -97,6 +107,52 @@ components:
         run_id:
           type: string
           format: uuid
+
+    RunLogSchema:
+      properties:
+        loggedValues:
+          type: array
+          items:
+            properties:
+              key_flattened:
+                type: string
+              datatype:
+                type: string
+                description: "the actual value data type of the logged data for this key."
+                enum: [ scalar, vector, image, video, dataframe ]
+              assigned_type_name:
+                type: string
+                description: "links to a user defined type by its name. Note this is like a decorator and not related to the actual datatype of the logged value."
+        types:
+          type: array
+          description: "A user defined type describing what value is 'optimal' for linked logged value keys."
+          items:
+            properties:
+              name:
+                type: string
+              optimal:
+                type: string
+                description: "Is it good/better for a value to be high or low"
+                enum: [ high, low ]
+              unit:
+                type: string
+                examples: ['m/s', 'seconds']
+        metrics:
+          type: array
+          description: "A list of logged value key that allow to determine how good a run is."
+          items:
+            properties:
+              key_flattened:
+                type: string
+                description: "They key of the logged value"
+              optimal:
+                type: string
+                description: "Is it good/better for a value to be high or low. This can also be inherited to the type assigned to a logged value key."
+                enum: [ high, low ]
+
+
+
+
     # this is just to show how the structure of logged values.
     # for network transfer a compressed version (e.g. no keys) will be used.
     LoggedValues_Full:
@@ -119,3 +175,4 @@ components:
           type:
             - array
             - number
+
