@@ -1,9 +1,6 @@
 package de.wtl.core.plugins
 
-import com.fasterxml.jackson.core.util.DefaultIndenter
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter
-import com.fasterxml.jackson.databind.SerializationFeature
-import io.ktor.serialization.jackson.jackson
+import io.ktor.serialization.kotlinx.json.json
 import io.ktor.serialization.kotlinx.protobuf.protobuf
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -17,16 +14,8 @@ import kotlinx.serialization.ExperimentalSerializationApi
 @OptIn(ExperimentalSerializationApi::class)
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
+        json()
         protobuf()
-        jackson {
-            configure(SerializationFeature.INDENT_OUTPUT, true)
-            setDefaultPrettyPrinter(
-                DefaultPrettyPrinter().apply {
-                    indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
-                    indentObjectsWith(DefaultIndenter("  ", "\n"))
-                },
-            )
-        }
     }
     routing {
         get("/json/kotlinx-serialization") {

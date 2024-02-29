@@ -18,8 +18,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
 
-const val connectionString = "mongodb://rootuser:rootpass@localhost:27017"
-val client = MongoClient.create(connectionString = connectionString)
+private const val CONNECTION_STRING = "mongodb://rootuser:rootpass@localhost:27017"
+private val client = MongoClient.create(connectionString = CONNECTION_STRING)
 
 fun Application.configureRouting() {
     install(AutoHeadResponse)

@@ -1,5 +1,6 @@
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
 
 plugins {
     id("io.ktor.plugin") version libs.versions.ktor.get()
@@ -7,6 +8,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version libs.versions.kotlin.get()
     id("org.jlleitschuh.gradle.ktlint") version libs.versions.ktlint.get()
     id("org.openapi.generator") version libs.versions.openapiGenerator.get()
+    idea
     kotlin("jvm") version libs.versions.kotlin.get()
 }
 
@@ -14,7 +16,7 @@ group = "de.wtl"
 version = "0.0.1"
 
 application {
-    mainClass.set("de.wtl.ApplicationKt")
+    mainClass.set("de.wtl.core.ApplicationKt")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
@@ -35,7 +37,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
     implementation("io.ktor:ktor-client-apache-jvm")
     implementation("io.ktor:ktor-client-core-jvm")
-    implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-serialization-kotlinx-protobuf")
     implementation("io.ktor:ktor-server-auth-jvm")
     implementation("io.ktor:ktor-server-auto-head-response-jvm")
@@ -50,9 +52,9 @@ dependencies {
     implementation("io.ktor:ktor-server-metrics-micrometer-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.ktor:ktor-server-partial-content-jvm")
-    implementation("io.ktor:ktor-server-status-pages-jvm")
     implementation("io.micrometer:micrometer-registry-prometheus:${libs.versions.prometeus.get()}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.versions.coroutines.get()}")
+    implementation("org.mongodb:bson-kotlinx:${libs.versions.mongodb.get()}")
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:${libs.versions.mongodb.get()}")
 
     testImplementation("io.hosuaby:inject-resources-junit-jupiter:${libs.versions.injectTestResources.get()}")
@@ -110,9 +112,21 @@ graalvmNative {
     }
 }
 
+idea {
+    module {
+        isDownloadJavadoc = true
+        isDownloadSources = true
+    }
+}
+
+tasks.withType<KtLintCheckTask>().configureEach {
+    mustRunAfter("openApiGenerate")
+    source.removeAll { "generated" in it.path }
+}
+
 openApiGenerate {
     generatorName = "kotlin"
-    inputSpec = "${projectDir.parent}/api/openapi.yaml"
+    inputSpec = "${projectDir.parent}/doc/api/openapi.yaml"
     outputDir = layout.buildDirectory.dir("generated").get().asFile.absolutePath
     skipValidateSpec = true
     globalProperties = mapOf("models" to "")
@@ -123,6 +137,7 @@ openApiGenerate {
     generateApiTests = false
     generateModelDocumentation = false
     generateModelTests = false
+    cleanupOutput = true
 }
 
 sourceSets {

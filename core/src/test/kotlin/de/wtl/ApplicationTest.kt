@@ -1,6 +1,6 @@
 package de.wtl
 
-import de.wtl.plugins.configureRouting
+import de.wtl.core.plugins.configureRouting
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.HttpStatusCode

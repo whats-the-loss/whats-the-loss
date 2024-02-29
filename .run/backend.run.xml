@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
     <configuration default="false" name="backend" type="JetRunConfigurationType">
-        <option name="MAIN_CLASS_NAME" value="de.wtl.ApplicationKt"/>
+        <option name="MAIN_CLASS_NAME" value="de.wtl.core.ApplicationKt"/>
         <module name="de.wtl.core.main"/>
         <shortenClasspath name="ARGS_FILE"/>
         <method v="2">

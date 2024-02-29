@@ -3,9 +3,7 @@ info:
   title: Whats the loss API
   version: 0.0.1
 
-
 # @todo add notion of users
-
 
 paths:
   /logging/run:
@@ -22,7 +20,6 @@ paths:
             application/protobuf:
               schema:
                 $ref: '#/components/schemas/RunId'
-
     put:
       summary: "Update a run (its status and configuration)"
       parameters:
@@ -37,11 +34,10 @@ paths:
               properties:
                 run_status:
                   type: string
-                  enum: [running, crashed, canceled, finished]
+                  enum: [ running, crashed, canceled, finished ]
                 configuration:
                   type: object
                   title: "A json object of configuration values"
-
   /logging/logValues:
     post:
       summary: "Add a new log entry of values, optionally linked to a step value"
@@ -57,7 +53,6 @@ paths:
               allOf:
                 - $ref: '#/components/schemas/LoggedValues_Full'
                 - $ref: '#/components/schemas/RunId'
-
   /logging/logMedia:
     post:
       summary: "Log a media object (image, video), optionally linked to a step value"
@@ -80,13 +75,6 @@ paths:
             schema:
               type: string
               format: binary
-
-
-
-
-
-
-
 components:
   schemas:
     RunProperties:
