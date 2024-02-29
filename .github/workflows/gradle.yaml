@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'core/**'
+      - '.github/workflows/gradle.yaml'
 
 jobs:
   build:
