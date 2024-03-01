@@ -1,0 +1,10 @@
+@for (navItem of navItems; track navItem.name) {
+  <div class="nav-sidebar-item">
+    <a [routerLink]="navItem.routerLink" routerLinkActive="nav-active">
+      <mat-icon aria-hidden="false" [fontIcon]="navItem.icon"></mat-icon>
+      <p>
+        {{navItem.name}}
+      </p>
+    </a>
+  </div>
+}

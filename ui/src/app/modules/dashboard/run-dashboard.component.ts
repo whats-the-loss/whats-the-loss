@@ -6,7 +6,7 @@ import {ActivatedRoute} from "@angular/router";
   standalone: true,
   imports: [],
   templateUrl: './run-dashboard.component.html',
-  styleUrl: './run-dashboard.component.sass'
+  styleUrl: './run-dashboard.component.scss'
 })
 export class RunDashboardComponent implements OnInit {
 

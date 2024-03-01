@@ -1,0 +1,36 @@
+@use '@angular/material' as mat;
+//@use '@angular/material-experimental' as matx;
+@include mat.core();
+
+$app-primary: mat.define-palette(mat.$indigo-palette);
+$app-accent: mat.define-palette(mat.$pink-palette);
+
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+
+a {
+  color: white;
+}
+
+
+$dark-theme: mat.define-dark-theme((
+    color: (
+      primary: $app-primary,
+      accent: $app-accent,
+    )
+));
+
+
+html {
+  // Apply the base theme at the root, so it will be inherited by the whole app.
+  @include mat.all-component-themes($dark-theme);
+}
+
+mat-sidenav {
+  // Override the colors to create a dark sidenav.
+  //@include mat.all-component-colors($dark-theme);
+}
