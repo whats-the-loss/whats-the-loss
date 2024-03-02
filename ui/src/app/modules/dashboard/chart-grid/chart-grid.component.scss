@@ -1,0 +1,21 @@
+
+mat-expansion-panel {
+  box-shadow: none;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-rows: repeat(10, 20px);
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 2px;
+
+  // default
+  wtl-chart-grid-element {
+    /*
+    grid-row: span 2;
+    grid-column: span 2;
+    */
+  }
+}
+
+
