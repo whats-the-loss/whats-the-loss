@@ -1,11 +1,21 @@
-<h3>
-  Dashboard
-</h3>
+<wtl-runs-sidepanel>
+</wtl-runs-sidepanel>
 
-Project: {{projectName}}
-<br/>
-Experiment: {{experimentId}}
+<div class="dashboard-content">
+  Project: {{projectName}}
+  <br/>
+  Experiment: {{experimentId}}
+  <br/>
+  <br/>
+
+  <mat-accordion [multi]="true">
+    @for (panel of panels; track panel.path) {
+      <wtl-chart-grid [panelPath]="panel.path">
+      </wtl-chart-grid>
+    }
+  </mat-accordion>
+</div>
 
 
-<wtl-chart-grid>
-</wtl-chart-grid>
+
+

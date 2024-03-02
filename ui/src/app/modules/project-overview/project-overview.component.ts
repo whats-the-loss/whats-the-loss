@@ -34,8 +34,8 @@ import {MatIcon} from "@angular/material/icon";
 export class ProjectOverviewComponent {
 
   experiments: { name: string }[] = [
-    {name: 'exp 1'},
-    {name: 'exp 2'},
+    {name: 'exp-1'},
+    {name: 'exp-2'},
   ]
   project_name: string = 'Project 1';
   displayedColumns = [

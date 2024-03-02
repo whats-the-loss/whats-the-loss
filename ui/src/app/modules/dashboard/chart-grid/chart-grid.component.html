@@ -1,26 +1,26 @@
 
 
-<mat-accordion>
-  <mat-expansion-panel class="mat-elevation-z0" expanded>
-    <mat-expansion-panel-header>
-      <!--
-      <mat-panel-title>
-        Personal data
-      </mat-panel-title>
-      -->
-      <mat-panel-description>
-        Type your name and age
-        <mat-icon>grid_on</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
 
-    <div class="charts-grid" [style]="chartGridStyle()">
-      @for(chart of chartsElements; track chart.id) {
-        <wtl-chart-grid-element [style]="chartElementStyle()">
+<mat-expansion-panel class="mat-elevation-z0" expanded>
+  <mat-expansion-panel-header>
+    <!--
+    <mat-panel-title>
+      Personal data
+    </mat-panel-title>
+    -->
+    <mat-panel-title>
+      <mat-icon>grid_on</mat-icon>
+      {{panelPath}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
 
-        </wtl-chart-grid-element>
-      }
-    </div>
+  <div class="charts-grid">
+    @for(chart of chartsElements; track chart.id) {
+      <wtl-chart-grid-element [style]="chartElementStyle()">
 
-  </mat-expansion-panel>
-</mat-accordion>
+      </wtl-chart-grid-element>
+    }
+  </div>
+
+</mat-expansion-panel>
+

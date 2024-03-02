@@ -1,6 +1,8 @@
 @for (navItem of navItems; track navItem.name) {
   <div class="nav-sidebar-item">
-    <a [routerLink]="navItem.routerLink" routerLinkActive="nav-active">
+    <a [routerLink]="navItem.routerLink" routerLinkActive="nav-active"
+       [routerLinkActiveOptions]="{paths: 'exact',  matrixParams: 'exact', queryParams: 'ignored',  fragment: 'ignored'}"
+    >
       <mat-icon aria-hidden="false" [fontIcon]="navItem.icon"></mat-icon>
       <p>
         {{navItem.name}}

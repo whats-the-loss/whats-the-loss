@@ -1,0 +1,15 @@
+:host {
+  border-right: var(--mat-sidenav-container-divider-color) 1px solid;
+  //background-color: var(--mat-sidenav-container-background-color);
+  height: 100%;
+  //display: flex;
+  position: sticky;
+}
+
+h4 {
+  margin-bottom: 5px;
+}
+
+.mat-tree {
+  background-color: transparent;
+}

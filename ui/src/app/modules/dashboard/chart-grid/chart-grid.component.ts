@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Input, input} from '@angular/core';
 import {
   MatAccordion,
   MatExpansionPanel,
   MatExpansionPanelDescription,
-  MatExpansionPanelHeader
+  MatExpansionPanelHeader, MatExpansionPanelTitle
 } from "@angular/material/expansion";
 import {MatIcon} from "@angular/material/icon";
 import {ChartGridElementComponent} from "./chart-grid-element/chart-grid-element.component";
@@ -16,6 +16,7 @@ import {ChartGridElementComponent} from "./chart-grid-element/chart-grid-element
     MatExpansionPanel,
     MatExpansionPanelDescription,
     MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
     MatIcon,
     ChartGridElementComponent
   ],
@@ -23,6 +24,9 @@ import {ChartGridElementComponent} from "./chart-grid-element/chart-grid-element
   styleUrl: './chart-grid.component.scss'
 })
 export class ChartGridComponent {
+  @Input({ required: true }) panelPath: string = '??'
+
+
   chartsElements = [
     {id: 0, name: 'Test'},
     {id: 1, name: 'Test'},
@@ -32,28 +36,18 @@ export class ChartGridComponent {
     {id: 3, name: 'Test'},
   ];
 
-  chartGridNumRows = 10
-  chartGridNumColumns = 20
-
-
   chartGridElementSize = {
-    height: 5,
-    width: 10,
+    height: 200,
+    width: 300,
   }
 
 
-  chartGridStyle() {
-    return `
-      grid-template-rows: repeat(${this.chartGridNumRows}, 20px);
-      grid-template-columns: repeat(${this.chartGridNumColumns}, minmax(10px, 1fr);
-    `
-  }
-
-
+  // @todo add drag drop support (e.g. via ng-dnd: https://stackblitz.com/edit/867pxw?file=src%2Fexample%2Fchips-drag-drop-example.ts)
   chartElementStyle() {
     return `
-       grid-row: span ${this.chartGridElementSize.height};
-       grid-column: span ${this.chartGridElementSize.width};
+       height: ${this.chartGridElementSize.height}px;
+       width: ${this.chartGridElementSize.width}px;
     `
+    //minmax(100px, ${this.chartGridElementSize.width}fr);
   }
 }
