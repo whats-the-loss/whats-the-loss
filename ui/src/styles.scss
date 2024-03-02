@@ -34,3 +34,9 @@ mat-sidenav {
   // Override the colors to create a dark sidenav.
   //@include mat.all-component-colors($dark-theme);
 }
+
+
+.main-page-content {
+  padding: 15px;
+  //padding-left: 20px;
+}

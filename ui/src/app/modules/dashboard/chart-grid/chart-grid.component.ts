@@ -1,4 +1,4 @@
-import {Component, Input, input} from '@angular/core';
+import {Component, Input, input, ViewEncapsulation} from '@angular/core';
 import {
   MatAccordion,
   MatExpansionPanel,
@@ -21,7 +21,8 @@ import {ChartGridElementComponent} from "./chart-grid-element/chart-grid-element
     ChartGridElementComponent
   ],
   templateUrl: './chart-grid.component.html',
-  styleUrl: './chart-grid.component.scss'
+  styleUrl: './chart-grid.component.scss',
+  encapsulation: ViewEncapsulation.None  // to change style of expansion card
 })
 export class ChartGridComponent {
   @Input({ required: true }) panelPath: string = '??'

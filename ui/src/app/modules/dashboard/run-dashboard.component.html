@@ -1,13 +1,12 @@
 <wtl-runs-sidepanel>
 </wtl-runs-sidepanel>
 
-<div class="dashboard-content">
+<div class="dashboard-content main-page-content">
   Project: {{projectName}}
   <br/>
   Experiment: {{experimentId}}
   <br/>
   <br/>
-
   <mat-accordion [multi]="true">
     @for (panel of panels; track panel.path) {
       <wtl-chart-grid [panelPath]="panel.path">

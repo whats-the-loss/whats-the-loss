@@ -1,0 +1,30 @@
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 15px;
+  height: 100%;
+
+  font-size: var(--mat-expansion-header-text-font);
+
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+}
+
+h4 {
+  width: fit-content;
+  margin: 0;
+}
+
+.separator {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-weight: bold;
+}

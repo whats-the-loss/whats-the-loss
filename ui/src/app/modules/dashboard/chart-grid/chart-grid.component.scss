@@ -3,21 +3,31 @@ $expansion-panel-margin: 8px;
 
 mat-expansion-panel {
   box-shadow: none;
-  margin-bottom: $expansion-panel-margin;
-  margin-top: $expansion-panel-margin;
+  margin-bottom: $expansion-panel-margin !important;
+  margin-top: $expansion-panel-margin !important;;
 
   //--mat-expansion-header-expanded-state-height: 55px;
-  --mat-expansion-header-expanded-state-height: var(--mat-expansion-header-collapsed-state-height);
+  --mat-expansion-header-expanded-state-height: var(--mat-expansion-header-collapsed-state-height) !important;
+}
+
+.mat-expansion-panel-chart-grid {
+  .mat-expansion-panel-content .mat-expansion-panel-body {
+    padding: 0 10px 10px;
+  }
+  mat-expansion-panel-header {
+    padding-left: 10px;
+    font-weight: bold;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
 }
 
 mat-expansion-panel-header {
-  padding-left: 10px;
-  padding-right: 10px;
 
-  mat-icon {
-    margin-right: 8px;
-  }
 }
+
 
 
 

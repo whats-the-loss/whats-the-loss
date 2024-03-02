@@ -4,8 +4,15 @@
   </mat-drawer>
 
   <mat-drawer-content>
-    <router-outlet>
-    </router-outlet>
+    <div class="nav-breadcrumbs">
+      <wtl-breadcrumbs [pathElements]="breadcrumbsPath">
+      </wtl-breadcrumbs>
+    </div>
+
+    <div class="main-content">
+      <router-outlet>
+      </router-outlet>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
 

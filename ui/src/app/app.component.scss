@@ -3,11 +3,29 @@
   display: grid;
 }
 
+
+$nav-background-color: #242427;
+mat-drawer {
+  background-color: $nav-background-color;
+}
+
+
+$breadcrumbs-height: 45px;
+
 mat-drawer-content {
-  padding: 10px;
-  padding-left: 20px;
-  /*
-  padding: 10px;
-  padding-left: 20px;
-  */
+  .main-content {
+    height: calc(100% - $breadcrumbs-height);
+    //padding: 10px;
+    //padding-left: 20px;
+    /*
+    padding: 10px;
+    padding-left: 20px;
+    */
+  }
+}
+
+.nav-breadcrumbs {
+  height: $breadcrumbs-height;
+  //margin-bottom: 10px;
+  background-color: $nav-background-color;
 }
