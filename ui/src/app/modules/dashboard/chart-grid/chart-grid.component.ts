@@ -1,4 +1,4 @@
-import {Component, Input, input, ViewEncapsulation} from '@angular/core';
+import {Component, computed, effect, Input, input, ViewEncapsulation} from '@angular/core';
 import {
   MatAccordion,
   MatExpansionPanel,
@@ -7,6 +7,8 @@ import {
 } from "@angular/material/expansion";
 import {MatIcon} from "@angular/material/icon";
 import {ChartGridElementComponent} from "./chart-grid-element/chart-grid-element.component";
+import {DASHBOARD_ECHARTS_GROUP_NAME, DashboardSettings} from "../run-dashboard.definitions";
+import {connect, disconnect} from "echarts";
 
 @Component({
   selector: 'wtl-chart-grid',
@@ -26,6 +28,9 @@ import {ChartGridElementComponent} from "./chart-grid-element/chart-grid-element
 })
 export class ChartGridComponent {
   @Input({ required: true }) panelPath: string = '??'
+  dashboardSettings = input.required<DashboardSettings>()
+
+  chartsShowTooltip = computed(() => this.dashboardSettings().chartShowTooltip)
 
 
   chartsElements = [
@@ -38,9 +43,11 @@ export class ChartGridComponent {
   ];
 
   chartGridElementSize = {
-    height: 200,
-    width: 300,
+    height: 250,
+    width: 350,
   }
+
+
 
 
   // @todo add drag drop support (e.g. via ng-dnd: https://stackblitz.com/edit/867pxw?file=src%2Fexample%2Fchips-drag-drop-example.ts)

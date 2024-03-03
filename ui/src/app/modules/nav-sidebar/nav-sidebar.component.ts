@@ -17,7 +17,7 @@ export class NavSidebarComponent {
   navItems = [
     {name: 'Project', icon: 'home', routerLink: '/project/my-test-project'},
     {name: 'Run Charts', icon: 'insert_chart_outlined', routerLink: '/project/x/experiment/x/dashboard'},
-    {name: 'Runs', icon: 'list', routerLink: '/project/x/runs'},
+    {name: 'Runs', icon: 'list', routerLink: ['/project', 'x', 'experiment', 'x', 'runs']},
     {name: 'Settings', icon: 'settings', routerLink: '/settings'}
   ]
 

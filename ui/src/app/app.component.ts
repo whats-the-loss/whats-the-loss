@@ -4,6 +4,7 @@ import {MatDrawer, MatDrawerContainer, MatDrawerContent} from "@angular/material
 import {NavSidebarComponent} from "./modules/nav-sidebar/nav-sidebar.component";
 import {BreadcrumbsComponent} from "./modules/util/breadcrumbs/breadcrumbs.component";
 import {filter} from "rxjs";
+import {NgxEchartsDirective, provideEcharts} from "ngx-echarts";
 
 @Component({
   selector: 'app-root',
@@ -14,10 +15,14 @@ import {filter} from "rxjs";
     MatDrawerContainer,
     MatDrawerContent,
     NavSidebarComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    NgxEchartsDirective
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  providers: [
+    provideEcharts(),
+  ]
 })
 export class AppComponent {
   title = 'ui';
@@ -39,7 +44,6 @@ export class AppComponent {
     this.breadcrumbsPath = [];
     var routeBreadcrumbPath: string[] = activatedRoute.snapshot.data['breadcrumbPath']
     if (routeBreadcrumbPath) {
-      console.log(activatedRoute.snapshot.paramMap.get('project_id'))
       routeBreadcrumbPath = routeBreadcrumbPath.map((el: string) => {
         if (el.startsWith(':')) {
           return activatedRoute.snapshot.paramMap.get(el.substring(1))!
@@ -49,7 +53,7 @@ export class AppComponent {
         }
       })
       this.breadcrumbsPath.push(...routeBreadcrumbPath)
-      console.log(this.breadcrumbsPath)
+      //console.log(this.breadcrumbsPath)
     }
     if (activatedRoute.firstChild !== null) {
       this.setBreadcrumbsPath(activatedRoute.firstChild)

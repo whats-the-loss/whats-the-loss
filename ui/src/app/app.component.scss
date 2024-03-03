@@ -1,10 +1,11 @@
+@import "variables";
+
 :host {
   height: 100%;
   display: grid;
 }
 
 
-$nav-background-color: #242427;
 mat-drawer {
   background-color: $nav-background-color;
 }

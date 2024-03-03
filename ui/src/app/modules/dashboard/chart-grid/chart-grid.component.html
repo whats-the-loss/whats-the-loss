@@ -16,7 +16,7 @@
 
   <div class="charts-grid">
     @for(chart of chartsElements; track chart.id) {
-      <wtl-chart-grid-element [style]="chartElementStyle()">
+      <wtl-chart-grid-element [style]="chartElementStyle()" [showTooltip]="chartsShowTooltip()">
 
       </wtl-chart-grid-element>
     }

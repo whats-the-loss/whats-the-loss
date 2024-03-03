@@ -2,6 +2,7 @@
   <div class="nav-sidebar-item">
     <a [routerLink]="navItem.routerLink" routerLinkActive="nav-active"
        [routerLinkActiveOptions]="{paths: 'exact',  matrixParams: 'exact', queryParams: 'ignored',  fragment: 'ignored'}"
+       [queryParams]="['a']"
     >
       <mat-icon aria-hidden="false" [fontIcon]="navItem.icon"></mat-icon>
       <p>
