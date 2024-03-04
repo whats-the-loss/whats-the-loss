@@ -39,10 +39,10 @@ paths:
                   type: object
                   title: "A json object of configuration values"
 
-  /logging/run/logSchema:
+  /logging/run/{runId}/logSchema:
     put:
       parameters:
-        - name: run_id
+        - name: runId
           in: path
           schema:
             $ref: "#/components/schemas/RunId"
@@ -165,19 +165,22 @@ components:
         values:
           type: array
           items:
-            $ref: '#/components/schemas/LoggedValues_Full_Value'
+            oneOf:
+              - properties:
+                  key_flattened:
+                    type: string
+                  value:
+                    type: number
+              - type: object
+                properties:
+                  key_flattened:
+                    type: string
+                  value:
+                    type: array
+                    items:
+                      type: number
         step:
           type: integer
         timestamp:
           type: string
           format: date-time
-
-    LoggedValues_Full_Value:
-      properties:
-        key_flattened:
-          type: string
-        value:
-          type:
-            - array
-            - number
-

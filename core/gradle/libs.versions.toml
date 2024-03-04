@@ -2,6 +2,8 @@
 coroutines = "1.7.3"
 graalvm = "0.10.1"
 injectTestResources = "0.3.3"
+klogging = "3.0.5"
+konform = "0.4.0"
 kotest = "5.8.0"
 kotlin = "1.9.22"
 ktlint = "12.1.0"

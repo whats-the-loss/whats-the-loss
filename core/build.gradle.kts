@@ -34,7 +34,8 @@ kotlin {
 }
 
 dependencies {
-    implementation("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
+    implementation("io.github.microutils:kotlin-logging-jvm:${libs.versions.klogging.get()}")
+    implementation("io.konform:konform-jvm:${libs.versions.konform.get()}")
     implementation("io.ktor:ktor-client-apache-jvm")
     implementation("io.ktor:ktor-client-core-jvm")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
@@ -52,10 +53,12 @@ dependencies {
     implementation("io.ktor:ktor-server-metrics-micrometer-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.ktor:ktor-server-partial-content-jvm")
+    implementation("io.ktor:ktor-server-websockets")
     implementation("io.micrometer:micrometer-registry-prometheus:${libs.versions.prometeus.get()}")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.versions.coroutines.get()}")
     implementation("org.mongodb:bson-kotlinx:${libs.versions.mongodb.get()}")
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:${libs.versions.mongodb.get()}")
+    runtimeOnly("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
     testImplementation("io.hosuaby:inject-resources-junit-jupiter:${libs.versions.injectTestResources.get()}")
     testImplementation("io.kotest:kotest-assertions-core-jvm:${libs.versions.kotest.get()}")
     testImplementation("io.ktor:ktor-server-tests-jvm")
