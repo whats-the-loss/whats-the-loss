@@ -1,6 +1,20 @@
-<div style="background-color: lightgrey; width: 100%">
-  Title Bar
-</div>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened disableClose="true">
+    <wtl-nav-sidebar></wtl-nav-sidebar>
+  </mat-drawer>
 
-<router-outlet>
-</router-outlet>
+  <mat-drawer-content>
+    <div class="nav-breadcrumbs">
+      <wtl-breadcrumbs [pathElements]="breadcrumbsPath">
+      </wtl-breadcrumbs>
+    </div>
+
+    <div class="main-content">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+

@@ -1,7 +1,37 @@
-<h3>
-  Dashboard
-</h3>
+<wtl-runs-sidepanel>
+</wtl-runs-sidepanel>
 
-Project: {{projectName}}
-<br/>
-Experiment: {{experimentId}}
+<div class="dashboard-content">
+  <div class="toolbar">
+    <h3>
+      Run Data:
+    </h3>
+    <button mat-icon-button (click)="toggleSettingsLinkCharts()" matTooltip="Link Charts">
+      <mat-icon>{{settings().linkCharts ? 'link' : 'link_off'}}</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleSettingsChartShowTooltip()" matTooltip="Show Chart Tooltips">
+      <mat-icon>{{settings().chartShowTooltip ? 'comments' : 'comments_disabled'}}</mat-icon>
+    </button>
+  </div>
+
+  <div class="main-page-content">
+    <!--
+    Project: {{projectName}}
+    <br/>
+    Experiment: {{experimentId}}
+    <br/>
+    <br/>
+    -->
+
+    <mat-accordion [multi]="true">
+      @for (panel of panels; track panel.path) {
+        <wtl-chart-grid [panelPath]="panel.path" [dashboardSettings]="settings()">
+        </wtl-chart-grid>
+      }
+    </mat-accordion>
+  </div>
+</div>
+
+
+
+

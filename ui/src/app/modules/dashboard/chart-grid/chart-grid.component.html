@@ -1,0 +1,26 @@
+
+
+
+<mat-expansion-panel class="mat-elevation-z0 mat-expansion-panel-chart-grid" expanded>
+  <mat-expansion-panel-header>
+    <!--
+    <mat-panel-title>
+      Personal data
+    </mat-panel-title>
+    -->
+    <mat-panel-title>
+      <mat-icon>grid_on</mat-icon>
+      {{panelPath}}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <div class="charts-grid">
+    @for(chart of chartsElements; track chart.id) {
+      <wtl-chart-grid-element [style]="chartElementStyle()" [showTooltip]="chartsShowTooltip()">
+
+      </wtl-chart-grid-element>
+    }
+  </div>
+
+</mat-expansion-panel>
+
