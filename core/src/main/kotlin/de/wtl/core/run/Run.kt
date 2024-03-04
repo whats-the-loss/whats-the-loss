@@ -6,9 +6,10 @@ import kotlinx.serialization.Serializable
 import org.bson.types.ObjectId
 
 @Serializable
-data class PaintOrder(
+data class Run(
     @SerialName("_id") @Contextual val id: ObjectId?,
-    val color: String,
-    val qty: Int,
-    @SerialName("brand") val manufacturer: String = "Acme",
+    val project: String,
+    val experiment: String,
+    val name: String,
+    val group: Set<String>,
 )

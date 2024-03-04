@@ -64,6 +64,9 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("io.mockk:mockk:${libs.versions.mockk.get()}")
     testImplementation(kotlin("test"))
+
+    implementation("io.ktor:ktor-server-resources")
+    implementation("io.ktor:ktor-server-request-validation")
 }
 
 tasks.withType<Test>().configureEach {
