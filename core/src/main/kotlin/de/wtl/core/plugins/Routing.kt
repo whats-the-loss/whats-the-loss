@@ -60,9 +60,9 @@ sealed interface Event {
 }
 
 // TODO jg:
-// - Test websocket with url parameters ✅
 // - API
-// - Database change sets
+// - Database change sets ✅
+// - Test websocket with url parameters ✅
 
 // TODO jj:
 // -
