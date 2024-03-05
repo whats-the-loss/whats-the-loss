@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
 
 plugins {
+    id("com.google.devtools.ksp") version libs.versions.ksp.get()
     id("io.ktor.plugin") version libs.versions.ktor.get()
     id("org.graalvm.buildtools.native") version libs.versions.graalvm.get()
     id("org.jetbrains.kotlin.plugin.serialization") version libs.versions.kotlin.get()
@@ -34,39 +35,53 @@ kotlin {
 }
 
 dependencies {
+    // logging
+    runtimeOnly("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
     implementation("io.github.microutils:kotlin-logging-jvm:${libs.versions.klogging.get()}")
+
+    // validation
     implementation("io.konform:konform-jvm:${libs.versions.konform.get()}")
+
+    // ktor
     implementation("io.ktor:ktor-client-apache-jvm")
     implementation("io.ktor:ktor-client-core-jvm")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
     implementation("io.ktor:ktor-serialization-kotlinx-protobuf")
     implementation("io.ktor:ktor-server-auth-jvm")
     implementation("io.ktor:ktor-server-auto-head-response-jvm")
-    implementation("io.ktor:ktor-server-caching-headers-jvm")
     implementation("io.ktor:ktor-server-call-logging-jvm")
     implementation("io.ktor:ktor-server-compression-jvm")
     implementation("io.ktor:ktor-server-conditional-headers-jvm")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-server-core-jvm")
-    implementation("io.ktor:ktor-server-forwarded-header-jvm")
     implementation("io.ktor:ktor-server-host-common-jvm")
     implementation("io.ktor:ktor-server-metrics-micrometer-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.ktor:ktor-server-partial-content-jvm")
+    implementation("io.ktor:ktor-server-request-validation")
     implementation("io.ktor:ktor-server-websockets")
+
+    // metrics
     implementation("io.micrometer:micrometer-registry-prometheus:${libs.versions.prometeus.get()}")
+
+    // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${libs.versions.coroutines.get()}")
+
+    // mongodb
     implementation("org.mongodb:bson-kotlinx:${libs.versions.mongodb.get()}")
     implementation("org.mongodb:mongodb-driver-kotlin-coroutine:${libs.versions.mongodb.get()}")
-    runtimeOnly("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
+
+    // koin
+    implementation("io.insert-koin:koin-annotations:${libs.versions.koinKsp.get()}")
+    implementation("io.insert-koin:koin-ktor:${libs.versions.koin.get()}")
+    implementation("io.insert-koin:koin-logger-slf4j:${libs.versions.koin.get()}")
+    ksp("io.insert-koin:koin-ksp-compiler:${libs.versions.koinKsp.get()}")
+
     testImplementation("io.hosuaby:inject-resources-junit-jupiter:${libs.versions.injectTestResources.get()}")
     testImplementation("io.kotest:kotest-assertions-core-jvm:${libs.versions.kotest.get()}")
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("io.mockk:mockk:${libs.versions.mockk.get()}")
     testImplementation(kotlin("test"))
-
-    implementation("io.ktor:ktor-server-resources")
-    implementation("io.ktor:ktor-server-request-validation")
 }
 
 tasks.withType<Test>().configureEach {
@@ -104,7 +119,7 @@ graalvmNative {
             }
             if (project.hasProperty("ci")) {
                 // limit resource usage in ci builds
-                buildArgs.addAll("-O3", "-march=native")
+                buildArgs.addAll("--gc=G1", "-march=native", "--pgo")
             } else {
                 // on local builds enable debug info and disable optimizations
                 quickBuild = true
@@ -150,6 +165,7 @@ sourceSets {
         kotlin {
             // Include the generated sources directory in the Kotlin source set
             srcDir(layout.buildDirectory.dir("generated/src/main/kotlin").get().asFile.absolutePath)
+            srcDir(layout.buildDirectory.dir("generated/ksp/main/kotlin").get().asFile.absolutePath)
         }
     }
 }

@@ -6,7 +6,7 @@
     "name": "android.os.Build$VERSION"
   },
   {
-    "name": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+    "name": "ch.qos.logback.classic.PatternLayout",
     "queryAllPublicMethods": true,
     "methods": [
       {
@@ -79,6 +79,15 @@
     ]
   },
   {
+    "name": "ch.qos.logback.classic.pattern.color.HighlightingCompositeConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "ch.qos.logback.classic.util.DefaultJoranConfigurator",
     "methods": [
       {
@@ -94,6 +103,17 @@
       {
         "name": "<init>",
         "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.Layout",
+    "methods": [
+      {
+        "name": "valueOf",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
       }
     ]
   },
@@ -121,7 +141,18 @@
   },
   {
     "name": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+    "queryAllPublicMethods": true,
     "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setLayout",
+        "parameterTypes": [
+          "ch.qos.logback.core.Layout"
+        ]
+      },
       {
         "name": "setParent",
         "parameterTypes": [
@@ -131,13 +162,31 @@
     ]
   },
   {
-    "name": "ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+    "name": "ch.qos.logback.core.pattern.PatternLayoutBase",
     "methods": [
       {
         "name": "setPattern",
         "parameterTypes": [
           "java.lang.String"
         ]
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.pattern.color.CyanCompositeConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.pattern.color.YellowCompositeConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
       }
     ]
   },
@@ -343,6 +392,12 @@
     "name": "io.ktor.server.netty.NettyChannelInitializer"
   },
   {
+    "name": "io.ktor.server.netty.NettyDirectDecoder"
+  },
+  {
+    "name": "io.ktor.server.netty.NettyDirectEncoder"
+  },
+  {
     "name": "io.ktor.server.netty.NettyHttpHandlerState",
     "fields": [
       {
@@ -503,6 +558,20 @@
     "fields": [
       {
         "name": "top"
+      }
+    ]
+  },
+  {
+    "name": "io.ktor.websocket.DefaultWebSocketSessionImpl",
+    "fields": [
+      {
+        "name": "closed"
+      },
+      {
+        "name": "pinger"
+      },
+      {
+        "name": "started"
       }
     ]
   },
@@ -1062,6 +1131,50 @@
     "name": "io.netty.channel.unix.PeerCredentials"
   },
   {
+    "name": "io.netty.handler.codec.ByteToMessageDecoder",
+    "methods": [
+      {
+        "name": "channelInactive",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "channelRead",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      },
+      {
+        "name": "channelReadComplete",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext"
+        ]
+      },
+      {
+        "name": "userEventTriggered",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "io.netty.handler.codec.MessageToByteEncoder",
+    "methods": [
+      {
+        "name": "write",
+        "parameterTypes": [
+          "io.netty.channel.ChannelHandlerContext",
+          "java.lang.Object",
+          "io.netty.channel.ChannelPromise"
+        ]
+      }
+    ]
+  },
+  {
     "name": "io.netty.handler.codec.http.HttpServerCodec"
   },
   {
@@ -1470,6 +1583,14 @@
     ]
   },
   {
+    "name": "java.util.concurrent.atomic.Striped64$Cell",
+    "fields": [
+      {
+        "name": "value"
+      }
+    ]
+  },
+  {
     "name": "javax.management.ObjectName"
   },
   {
@@ -1545,6 +1666,9 @@
         "name": "_value"
       }
     ]
+  },
+  {
+    "name": "kotlin.String"
   },
   {
     "name": "kotlin.Unit"
@@ -1830,6 +1954,12 @@
           "long",
           "long",
           "int"
+        ]
+      },
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.HdrHistogram.AbstractHistogram"
         ]
       }
     ]
