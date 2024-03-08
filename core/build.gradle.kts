@@ -34,9 +34,17 @@ kotlin {
     }
 }
 
+ksp {
+    arg("autoserviceKsp.verify", "true")
+}
+
 dependencies {
+    ksp("dev.zacsweers.autoservice:auto-service-ksp:${libs.versions.autoServiceKsp.get()}")
+    implementation("com.google.auto.service:auto-service-annotations:${libs.versions.autoService.get()}")
+
     // logging
-    runtimeOnly("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
+    implementation("io.jstach.rainbowgum:rainbowgum:${libs.versions.rainbowgum.get()}")
+    implementation("io.jstach.rainbowgum:rainbowgum-pattern:${libs.versions.rainbowgum.get()}")
     implementation("io.github.microutils:kotlin-logging-jvm:${libs.versions.klogging.get()}")
 
     // validation
@@ -110,7 +118,7 @@ graalvmNative {
                     ignoreExistingResourcesConfigFile = true
                 }
             }
-            buildArgs("--initialize-at-build-time=org.slf4j.LoggerFactory,ch.qos.logback")
+            buildArgs("--initialize-at-build-time=io.jstach.rainbowgum")
         }
 
         named("main") {

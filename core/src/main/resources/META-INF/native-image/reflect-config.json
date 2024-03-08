@@ -6,202 +6,6 @@
     "name": "android.os.Build$VERSION"
   },
   {
-    "name": "ch.qos.logback.classic.PatternLayout",
-    "queryAllPublicMethods": true,
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.joran.SerializedModelConfigurator",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.DateConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.LevelConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.LineSeparatorConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.LoggerConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.MessageConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.ThreadConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.pattern.color.HighlightingCompositeConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.classic.util.DefaultJoranConfigurator",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.ConsoleAppender",
-    "queryAllPublicMethods": true,
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.Layout",
-    "methods": [
-      {
-        "name": "valueOf",
-        "parameterTypes": [
-          "java.lang.String"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.OutputStreamAppender",
-    "methods": [
-      {
-        "name": "setEncoder",
-        "parameterTypes": [
-          "ch.qos.logback.core.encoder.Encoder"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.encoder.Encoder",
-    "methods": [
-      {
-        "name": "valueOf",
-        "parameterTypes": [
-          "java.lang.String"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
-    "queryAllPublicMethods": true,
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      },
-      {
-        "name": "setLayout",
-        "parameterTypes": [
-          "ch.qos.logback.core.Layout"
-        ]
-      },
-      {
-        "name": "setParent",
-        "parameterTypes": [
-          "ch.qos.logback.core.spi.ContextAware"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.pattern.PatternLayoutBase",
-    "methods": [
-      {
-        "name": "setPattern",
-        "parameterTypes": [
-          "java.lang.String"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.pattern.color.CyanCompositeConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.pattern.color.YellowCompositeConverter",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "ch.qos.logback.core.spi.ContextAware",
-    "methods": [
-      {
-        "name": "valueOf",
-        "parameterTypes": [
-          "java.lang.String"
-        ]
-      }
-    ]
-  },
-  {
     "name": "com.ibm.lang.management.OperatingSystemMXBean"
   },
   {
@@ -313,15 +117,6 @@
       },
       {
         "name": "getOpenFileDescriptorCount",
-        "parameterTypes": []
-      }
-    ]
-  },
-  {
-    "name": "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl",
-    "methods": [
-      {
-        "name": "<init>",
         "parameterTypes": []
       }
     ]
@@ -442,12 +237,6 @@
   },
   {
     "name": "io.ktor.server.netty.NettyChannelInitializer"
-  },
-  {
-    "name": "io.ktor.server.netty.NettyDirectDecoder"
-  },
-  {
-    "name": "io.ktor.server.netty.NettyDirectEncoder"
   },
   {
     "name": "io.ktor.server.netty.NettyHttpHandlerState",
@@ -613,20 +402,6 @@
     "fields": [
       {
         "name": "top"
-      }
-    ]
-  },
-  {
-    "name": "io.ktor.websocket.DefaultWebSocketSessionImpl",
-    "fields": [
-      {
-        "name": "closed"
-      },
-      {
-        "name": "pinger"
-      },
-      {
-        "name": "started"
       }
     ]
   },
@@ -1186,50 +961,6 @@
     "name": "io.netty.channel.unix.PeerCredentials"
   },
   {
-    "name": "io.netty.handler.codec.ByteToMessageDecoder",
-    "methods": [
-      {
-        "name": "channelInactive",
-        "parameterTypes": [
-          "io.netty.channel.ChannelHandlerContext"
-        ]
-      },
-      {
-        "name": "channelRead",
-        "parameterTypes": [
-          "io.netty.channel.ChannelHandlerContext",
-          "java.lang.Object"
-        ]
-      },
-      {
-        "name": "channelReadComplete",
-        "parameterTypes": [
-          "io.netty.channel.ChannelHandlerContext"
-        ]
-      },
-      {
-        "name": "userEventTriggered",
-        "parameterTypes": [
-          "io.netty.channel.ChannelHandlerContext",
-          "java.lang.Object"
-        ]
-      }
-    ]
-  },
-  {
-    "name": "io.netty.handler.codec.MessageToByteEncoder",
-    "methods": [
-      {
-        "name": "write",
-        "parameterTypes": [
-          "io.netty.channel.ChannelHandlerContext",
-          "java.lang.Object",
-          "io.netty.channel.ChannelPromise"
-        ]
-      }
-    ]
-  },
-  {
     "name": "io.netty.handler.codec.http.HttpServerCodec"
   },
   {
@@ -1284,17 +1015,6 @@
   {
     "name": "io.netty.util.ReferenceCountUtil",
     "queryAllDeclaredMethods": true
-  },
-  {
-    "name": "io.netty.util.ResourceLeakDetector$DefaultResourceLeak",
-    "fields": [
-      {
-        "name": "droppedRecords"
-      },
-      {
-        "name": "head"
-      }
-    ]
   },
   {
     "name": "io.netty.util.concurrent.DefaultPromise",
@@ -1377,9 +1097,6 @@
   },
   {
     "name": "java.io.FileDescriptor"
-  },
-  {
-    "name": "java.io.FilePermission"
   },
   {
     "name": "java.lang.Boolean",
@@ -1478,9 +1195,6 @@
     "name": "java.lang.Record"
   },
   {
-    "name": "java.lang.RuntimePermission"
-  },
-  {
     "name": "java.lang.Short",
     "fields": [
       {
@@ -1538,24 +1252,6 @@
   },
   {
     "name": "java.math.BigInteger"
-  },
-  {
-    "name": "java.net.NetPermission"
-  },
-  {
-    "name": "java.net.SocketPermission"
-  },
-  {
-    "name": "java.net.URLPermission",
-    "methods": [
-      {
-        "name": "<init>",
-        "parameterTypes": [
-          "java.lang.String",
-          "java.lang.String"
-        ]
-      }
-    ]
   },
   {
     "name": "java.nio.Bits",
@@ -1623,22 +1319,13 @@
     "name": "java.security.AlgorithmParametersSpi"
   },
   {
-    "name": "java.security.AllPermission"
-  },
-  {
     "name": "java.security.KeyStoreSpi"
   },
   {
     "name": "java.security.SecureRandomParameters"
   },
   {
-    "name": "java.security.SecurityPermission"
-  },
-  {
     "name": "java.util.Date"
-  },
-  {
-    "name": "java.util.PropertyPermission"
   },
   {
     "name": "java.util.concurrent.ScheduledThreadPoolExecutor",
@@ -1704,9 +1391,6 @@
         ]
       }
     ]
-  },
-  {
-    "name": "javax.smartcardio.CardPermission"
   },
   {
     "name": "jdk.internal.misc.Unsafe",
@@ -1841,14 +1525,6 @@
       },
       {
         "name": "_state"
-      }
-    ]
-  },
-  {
-    "name": "kotlinx.coroutines.CancelledContinuation",
-    "fields": [
-      {
-        "name": "_resumed"
       }
     ]
   },
@@ -2023,14 +1699,6 @@
     "fields": [
       {
         "name": "cleanedAndPointers"
-      }
-    ]
-  },
-  {
-    "name": "kotlinx.coroutines.internal.ThreadSafeHeap",
-    "fields": [
-      {
-        "name": "_size"
       }
     ]
   },
