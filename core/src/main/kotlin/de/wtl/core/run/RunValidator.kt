@@ -5,15 +5,15 @@ import io.konform.validation.jsonschema.maxLength
 import io.konform.validation.jsonschema.minLength
 
 val RunValidator = Validation {
-    Run::project required {
+    RunDtoRequest::experiment required {
         minLength(3)
         maxLength(100)
     }
-    Run::experiment required {
+    RunDtoRequest::name required {
         minLength(3)
         maxLength(100)
     }
-    Run::name required {
+    RunDtoRequest::project required {
         minLength(3)
         maxLength(100)
     }

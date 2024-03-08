@@ -59,6 +59,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("io.ktor:ktor-server-partial-content-jvm")
     implementation("io.ktor:ktor-server-request-validation")
+    implementation("io.ktor:ktor-server-status-pages")
     implementation("io.ktor:ktor-server-websockets")
 
     // metrics

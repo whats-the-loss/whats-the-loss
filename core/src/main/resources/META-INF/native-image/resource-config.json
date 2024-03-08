@@ -71,6 +71,9 @@
         "pattern": "\\Qkotlin/internal/internal.kotlin_builtins\\E"
       },
       {
+        "pattern": "\\Qkotlin/jvm/jvm.kotlin_builtins\\E"
+      },
+      {
         "pattern": "\\Qkotlin/kotlin.kotlin_builtins\\E"
       },
       {

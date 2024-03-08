@@ -6,6 +6,7 @@ import de.wtl.core.plugins.configureMonitoring
 import de.wtl.core.plugins.configureRouting
 import de.wtl.core.plugins.configureSecurity
 import de.wtl.core.plugins.configureSerialization
+import de.wtl.core.plugins.configureStatusPage
 import de.wtl.core.plugins.configureWebSockets
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
@@ -22,5 +23,6 @@ fun Application.module() {
     configureRouting()
     configureSecurity()
     configureSerialization()
+    configureStatusPage()
     configureWebSockets()
 }

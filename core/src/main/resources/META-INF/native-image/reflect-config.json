@@ -343,6 +343,55 @@
     ]
   },
   {
+    "name": "de.wtl.core.run.Run",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "name": "de.wtl.core.run.Run$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.core.run.RunDtoRequest",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.core.run.RunDtoRequest$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.core.run.RunDtoResponse",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.core.run.RunDtoResponse$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "io.ktor.client.HttpClient",
     "fields": [
       {
@@ -357,6 +406,9 @@
         "name": "closed"
       }
     ]
+  },
+  {
+    "name": "io.ktor.http.HttpStatusCode"
   },
   {
     "name": "io.ktor.server.application.Application"
@@ -507,6 +559,9 @@
         "name": "_writeOp"
       }
     ]
+  },
+  {
+    "name": "io.ktor.utils.io.ByteReadChannel"
   },
   {
     "name": "io.ktor.utils.io.core.internal.ChunkBuffer",
@@ -1231,6 +1286,17 @@
     "queryAllDeclaredMethods": true
   },
   {
+    "name": "io.netty.util.ResourceLeakDetector$DefaultResourceLeak",
+    "fields": [
+      {
+        "name": "droppedRecords"
+      },
+      {
+        "name": "head"
+      }
+    ]
+  },
+  {
     "name": "io.netty.util.concurrent.DefaultPromise",
     "fields": [
       {
@@ -1340,6 +1406,27 @@
     ]
   },
   {
+    "name": "java.lang.Class",
+    "methods": [
+      {
+        "name": "getPermittedSubclasses",
+        "parameterTypes": []
+      },
+      {
+        "name": "getRecordComponents",
+        "parameterTypes": []
+      },
+      {
+        "name": "isRecord",
+        "parameterTypes": []
+      },
+      {
+        "name": "isSealed",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "java.lang.ClassValue"
   },
   {
@@ -1422,6 +1509,15 @@
     "fields": [
       {
         "name": "TYPE"
+      }
+    ]
+  },
+  {
+    "name": "java.lang.annotation.Repeatable",
+    "methods": [
+      {
+        "name": "value",
+        "parameterTypes": []
       }
     ]
   },
@@ -1622,6 +1718,30 @@
     ]
   },
   {
+    "name": "kotlin.Array"
+  },
+  {
+    "name": "kotlin.Deprecated",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "level",
+        "parameterTypes": []
+      },
+      {
+        "name": "message",
+        "parameterTypes": []
+      },
+      {
+        "name": "replaceWith",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "kotlin.Int"
+  },
+  {
     "name": "kotlin.Metadata",
     "queryAllDeclaredMethods": true,
     "methods": [
@@ -1660,6 +1780,20 @@
     ]
   },
   {
+    "name": "kotlin.ReplaceWith",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "expression",
+        "parameterTypes": []
+      },
+      {
+        "name": "imports",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "kotlin.SafePublicationLazyImpl",
     "fields": [
       {
@@ -1672,6 +1806,13 @@
   },
   {
     "name": "kotlin.Unit"
+  },
+  {
+    "name": "kotlin.collections.Set"
+  },
+  {
+    "name": "kotlin.jvm.JvmStatic",
+    "queryAllDeclaredMethods": true
   },
   {
     "name": "kotlin.jvm.internal.DefaultConstructorMarker"
@@ -1807,6 +1948,9 @@
     ]
   },
   {
+    "name": "kotlinx.coroutines.flow.Flow"
+  },
+  {
     "name": "kotlinx.coroutines.internal.AtomicOp",
     "fields": [
       {
@@ -1930,6 +2074,29 @@
     ]
   },
   {
+    "name": "kotlinx.serialization.SerialName",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "value",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "kotlinx.serialization.Serializable",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "with",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "kotlinx.serialization.internal.SerializationConstructorMarker"
+  },
+  {
     "name": "org.HdrHistogram.AbstractHistogram",
     "fields": [
       {
@@ -2040,6 +2207,9 @@
   },
   {
     "name": "org.bson.codecs.record.RecordCodecProvider"
+  },
+  {
+    "name": "org.bson.types.ObjectId"
   },
   {
     "name": "org.slf4j.Logger"

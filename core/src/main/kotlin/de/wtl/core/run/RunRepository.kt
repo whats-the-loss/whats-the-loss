@@ -1,11 +1,12 @@
 package de.wtl.core.run
 
-import kotlinx.coroutines.flow.Flow
+import com.mongodb.kotlin.client.coroutine.MongoDatabase
+import de.wtl.core.persistence.MongoDbRepository
+import de.wtl.core.persistence.SimpleMongoDbRepository
+import org.koin.core.annotation.Singleton
 
-interface RunRepository {
-    suspend fun create(run: Run)
-    suspend fun find(id: String): Run?
-    suspend fun update(run: Run)
-    suspend fun delete(id: String)
-    fun findAll(): Flow<Run>
-}
+interface RunRepository : MongoDbRepository<Run>
+
+@Singleton
+class RunRepositoryImpl(database: MongoDatabase) : RunRepository,
+    SimpleMongoDbRepository<Run>(database, "runs", Run::class.java)
