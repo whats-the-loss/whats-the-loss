@@ -8,7 +8,7 @@ plugins {
     id("io.ktor.plugin") version libs.versions.ktor.get()
     id("org.graalvm.buildtools.native") version libs.versions.graalvm.get()
     id("org.jetbrains.kotlin.plugin.serialization") version libs.versions.kotlin.get()
-    id("org.jmailen.kotlinter") version "4.2.0"
+    id("org.jmailen.kotlinter") version libs.versions.kotlinter.get()
     id("org.openapi.generator") version libs.versions.openapiGenerator.get()
     idea
     kotlin("jvm") version libs.versions.kotlin.get()
