@@ -51,7 +51,11 @@ open class SimpleMongoDbRepository<T : Identifiable>(
     override suspend fun update(identifiable: T): OperationResult {
         val result = database.getCollection(collectionName, type).replaceOne(Filters.eq(identifiable.id), identifiable)
 
-        return if (result.wasAcknowledged() && result.matchedCount > 0) OperationResult.Success else OperationResult.NotFound
+        return if (result.wasAcknowledged() && result.matchedCount > 0) {
+            OperationResult.Success
+        } else {
+            OperationResult.NotFound
+        }
     }
 
     override suspend fun delete(id: ObjectId): OperationResult {

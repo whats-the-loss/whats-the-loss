@@ -11,12 +11,18 @@ import java.util.*
 
 @AutoService(RainbowGumProvider::class)
 class RainbowGumProviderImpl : RainbowGumProvider {
+
+    companion object {
+        private const val LOG_PATTERN =
+            "%cyan(%d{YYYY-MM-dd HH:mm:ss.SSS}) [%yellow(%thread)] %highlight(%-5level) %logger{36}: %msg%n"
+    }
+
     override fun provide(config: LogConfig): Optional<RainbowGum> = RainbowGum.builder(config)
         .route { builder ->
             builder.level(Level.INFO)
             builder.appender("console") { appender ->
                 val encoder = PatternEncoderBuilder("console")
-                    .pattern("%cyan(%d{YYYY-MM-dd HH:mm:ss.SSS}) [%yellow(%thread)] %highlight(%-5level) %logger{36}: %msg%n")
+                    .pattern(LOG_PATTERN)
                     .fromProperties(config.properties())
                     .build()
 

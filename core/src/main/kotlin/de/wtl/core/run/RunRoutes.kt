@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.map
 import org.koin.ktor.ext.get
 
 fun Routing.registerRunRoutes() {
-
     val repository: RunRepository = get()
 
     post("/runs") {

@@ -1,13 +1,14 @@
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
+import org.jmailen.gradle.kotlinter.tasks.FormatTask
+import org.jmailen.gradle.kotlinter.tasks.LintTask
 
 plugins {
     id("com.google.devtools.ksp") version libs.versions.ksp.get()
     id("io.ktor.plugin") version libs.versions.ktor.get()
     id("org.graalvm.buildtools.native") version libs.versions.graalvm.get()
     id("org.jetbrains.kotlin.plugin.serialization") version libs.versions.kotlin.get()
-    id("org.jlleitschuh.gradle.ktlint") version libs.versions.ktlint.get()
+    id("org.jmailen.kotlinter") version "4.2.0"
     id("org.openapi.generator") version libs.versions.openapiGenerator.get()
     idea
     kotlin("jvm") version libs.versions.kotlin.get()
@@ -44,7 +45,6 @@ dependencies {
 
     // logging
     implementation("io.jstach.rainbowgum:rainbowgum:${libs.versions.rainbowgum.get()}")
-    implementation("io.jstach.rainbowgum:rainbowgum-pattern:${libs.versions.rainbowgum.get()}")
     implementation("io.github.microutils:kotlin-logging-jvm:${libs.versions.klogging.get()}")
 
     // validation
@@ -118,7 +118,7 @@ graalvmNative {
                     ignoreExistingResourcesConfigFile = true
                 }
             }
-            buildArgs("--initialize-at-build-time=io.jstach.rainbowgum")
+            buildArgs("--strict-image-heap", "--initialize-at-build-time=io.jstach.rainbowgum")
         }
 
         named("main") {
@@ -148,9 +148,12 @@ idea {
     }
 }
 
-tasks.withType<KtLintCheckTask>().configureEach {
-    mustRunAfter("openApiGenerate")
-    source.removeAll { "generated" in it.path }
+tasks.withType<LintTask>().configureEach {
+    exclude { fileTreeElement -> "generated/" in fileTreeElement.file.path }
+}
+
+tasks.withType<FormatTask>().configureEach {
+    exclude { fileTreeElement -> "generated/" in fileTreeElement.file.path }
 }
 
 openApiGenerate {
