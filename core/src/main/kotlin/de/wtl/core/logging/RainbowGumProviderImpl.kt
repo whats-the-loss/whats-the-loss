@@ -1,6 +1,5 @@
 package de.wtl.core.logging
 
-import com.google.auto.service.AutoService
 import io.jstach.rainbowgum.LogConfig
 import io.jstach.rainbowgum.LogOutput
 import io.jstach.rainbowgum.RainbowGum
@@ -9,7 +8,7 @@ import io.jstach.rainbowgum.spi.RainbowGumServiceProvider.RainbowGumProvider
 import java.lang.System.Logger.Level
 import java.util.*
 
-@AutoService(RainbowGumProvider::class)
+//@AutoService(RainbowGumProvider::class)
 class RainbowGumProviderImpl : RainbowGumProvider {
 
     companion object {

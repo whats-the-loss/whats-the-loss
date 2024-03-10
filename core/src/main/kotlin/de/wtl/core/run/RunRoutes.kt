@@ -33,7 +33,7 @@ fun Routing.registerRunRoutes() {
         val id = call.parameters["id"]?.toObjectIdOrNull() ?: return@put call.respond(HttpStatusCode.BadRequest)
         val run = call.receive<RunUpdateRequest>()
 
-        when (repository.update(id, run.configuration.toBsonDocument(), run.status)) {
+        when (repository.update(id, run.configuration, run.status)) {
             OperationResult.NotFound -> call.respond(HttpStatusCode.NotFound)
             OperationResult.Success -> call.respond(HttpStatusCode.NoContent)
         }

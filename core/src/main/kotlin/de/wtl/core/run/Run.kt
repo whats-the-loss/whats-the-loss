@@ -2,10 +2,11 @@ package de.wtl.core.run
 
 import de.wtl.api.model.RunStatus
 import de.wtl.core.persistence.Identifiable
+import de.wtl.core.persistence.JsonObjectSerializer
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.bson.BsonDocument
+import kotlinx.serialization.json.JsonObject
 import org.bson.types.ObjectId
 
 @Serializable
@@ -16,5 +17,5 @@ data class Run(
     val name: String,
     val groups: Set<String>,
     val status: RunStatus,
-    @Contextual val configuration: BsonDocument,
+    @Serializable(with = JsonObjectSerializer::class) val configuration: JsonObject,
 ) : Identifiable
