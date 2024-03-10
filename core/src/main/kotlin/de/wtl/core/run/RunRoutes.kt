@@ -1,5 +1,7 @@
 package de.wtl.core.run
 
+import de.wtl.api.model.RunCreateRequest
+import de.wtl.api.model.RunUpdateRequest
 import de.wtl.core.persistence.OperationResult
 import de.wtl.core.utils.toObjectIdOrNull
 import io.ktor.http.HttpStatusCode
@@ -18,24 +20,20 @@ fun Routing.registerRunRoutes() {
     val repository: RunRepository = get()
 
     post("/runs") {
-        val run = call.receive<RunDtoRequest>().toRun()
+        val request = call.receive<RunCreateRequest>()
+        val run = request.toRun()
         repository.create(run)
-        call.respond(HttpStatusCode.Created, run.toDtoResponse())
+        call.respond(HttpStatusCode.Created, run.toCreateDtoResponse())
     }
     get("/runs") {
         val runs = repository.findAll().map(Run::toDtoResponse)
         call.respond(runs)
     }
-    get("/runs/{id}") {
-        val id = call.parameters["id"]?.toObjectIdOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest)
-        val run = repository.findOrNull(id)
-        if (run != null) call.respond(run.toDtoResponse()) else call.respond(HttpStatusCode.NotFound)
-    }
     put("/runs/{id}") {
         val id = call.parameters["id"]?.toObjectIdOrNull() ?: return@put call.respond(HttpStatusCode.BadRequest)
-        val run = call.receive<RunDtoRequest>().toRun(id)
+        val run = call.receive<RunUpdateRequest>()
 
-        when (repository.update(run)) {
+        when (repository.update(id, run.configuration.toBsonDocument(), run.status)) {
             OperationResult.NotFound -> call.respond(HttpStatusCode.NotFound)
             OperationResult.Success -> call.respond(HttpStatusCode.NoContent)
         }

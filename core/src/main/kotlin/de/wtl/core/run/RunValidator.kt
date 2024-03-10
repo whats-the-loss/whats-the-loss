@@ -1,19 +1,20 @@
 package de.wtl.core.run
 
+import de.wtl.api.model.RunCreateRequest
 import io.konform.validation.Validation
 import io.konform.validation.jsonschema.maxLength
 import io.konform.validation.jsonschema.minLength
 
 val RunValidator = Validation {
-    RunDtoRequest::experiment required {
+    RunCreateRequest::experiment required {
         minLength(3)
         maxLength(100)
     }
-    RunDtoRequest::name required {
+    RunCreateRequest::name required {
         minLength(3)
         maxLength(100)
     }
-    RunDtoRequest::project required {
+    RunCreateRequest::project required {
         minLength(3)
         maxLength(100)
     }

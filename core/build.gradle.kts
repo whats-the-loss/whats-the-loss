@@ -162,7 +162,7 @@ openApiGenerate {
     outputDir = layout.buildDirectory.dir("generated").get().asFile.absolutePath
     skipValidateSpec = true
     globalProperties = mapOf("models" to "")
-    additionalProperties = mapOf("serializationLibrary" to "kotlinx_serialization")
+    additionalProperties = mapOf("serializationLibrary" to "kotlinx_serialization", "enumPropertyNaming" to "UPPERCASE")
     modelPackage = "$group.api.model"
     generateAliasAsModel = false
     generateApiDocumentation = false
@@ -170,6 +170,20 @@ openApiGenerate {
     generateModelDocumentation = false
     generateModelTests = false
     cleanupOutput = true
+}
+
+tasks.named("openApiGenerate") {
+    // Workaround for any json in generated code as it is not natively supported by openapi-generator for kotlin serialization
+    // see https://github.com/OpenAPITools/openapi-generator/pull/7353
+    doLast {
+        for (file in fileTree(layout.buildDirectory.dir("generated").get().asFile.absolutePath)) {
+            if (file.extension == "kt") {
+                var content = file.readText()
+                content = content.replace("kotlin.collections.Map<kotlin.String, kotlin.Any>", "kotlinx.serialization.json.JsonObject")
+                file.writeText(content)
+            }
+        }
+    }
 }
 
 sourceSets {
