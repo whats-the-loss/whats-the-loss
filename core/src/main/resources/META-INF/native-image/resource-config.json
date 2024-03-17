@@ -17,6 +17,9 @@
         "pattern": "\\QMETA-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider\\E"
       },
       {
+        "pattern": "\\QMETA-INF/services/io.ktor.server.config.ConfigLoader\\E"
+      },
+      {
         "pattern": "\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
       },
       {
@@ -56,6 +59,9 @@
         "pattern": "\\QMETA-INF/services/org.slf4j.spi.SLF4JServiceProvider\\E"
       },
       {
+        "pattern": "\\Qapplication.conf\\E"
+      },
+      {
         "pattern": "\\Qcommons-logging.properties\\E"
       },
       {
@@ -69,6 +75,9 @@
       },
       {
         "pattern": "\\Qkotlin/internal/internal.kotlin_builtins\\E"
+      },
+      {
+        "pattern": "\\Qkotlin/jvm/jvm.kotlin_builtins\\E"
       },
       {
         "pattern": "\\Qkotlin/kotlin.kotlin_builtins\\E"
@@ -104,7 +113,13 @@
         "pattern": "\\Qorg/fusesource/jansi/jansi.properties\\E"
       },
       {
+        "pattern": "\\Qreference.conf\\E"
+      },
+      {
         "pattern": "java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfkc.nrm\\E"
+      },
+      {
+        "pattern": "java.base:\\Qsun/net/www/content-types.properties\\E"
       }
     ]
   },

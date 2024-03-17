@@ -4,12 +4,15 @@ on:
   push:
     paths:
       - 'core/**'
+      - '.github/workflows/gradle.yaml'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: 'true'
       - uses: actions/setup-java@v4
         with:
           distribution: liberica
@@ -18,6 +21,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
+        working-directory: core
       - name: Execute Gradle build
         run: ./gradlew check
         working-directory: core

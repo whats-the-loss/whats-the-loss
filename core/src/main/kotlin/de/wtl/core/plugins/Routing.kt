@@ -1,52 +1,20 @@
 package de.wtl.core.plugins
 
-import com.mongodb.kotlin.client.coroutine.MongoClient
-import io.ktor.http.ContentType
+import de.wtl.core.utils.RouterFactory
+import de.wtl.core.utils.ValidatorFactory
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
 import io.ktor.server.application.install
 import io.ktor.server.plugins.autohead.AutoHeadResponse
-import io.ktor.server.response.respond
-import io.ktor.server.response.respondOutputStream
-import io.ktor.server.response.respondText
-import io.ktor.server.routing.get
+import io.ktor.server.plugins.requestvalidation.RequestValidation
 import io.ktor.server.routing.routing
-import io.ktor.util.cio.ChannelWriteException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.withContext
-
-private const val CONNECTION_STRING = "mongodb://rootuser:rootpass@localhost:27017"
-private val client = MongoClient.create(connectionString = CONNECTION_STRING)
+import org.koin.ktor.ext.getKoin
 
 fun Application.configureRouting() {
     install(AutoHeadResponse)
+    install(RequestValidation) {
+        getKoin().getAll<ValidatorFactory<*>>().forEach { factory -> factory.register(this) }
+    }
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
-        get("/mongo") {
-            call.respondOutputStream(contentType = ContentType.Text.Plain) {
-                val writer = bufferedWriter()
-                client.listDatabaseNames().collect {
-                    println(it)
-                    try {
-                        withContext(Dispatchers.IO) {
-                            writer.write(it)
-                            writer.newLine()
-                            writer.flush()
-                        }
-                        delay(1000)
-                    } catch (_: ChannelWriteException) {
-                        cancel()
-                    }
-                }
-            }
-        }
-        get("/mongo2") {
-            call.respond(client.listDatabaseNames().onEach { delay(1000) })
-        }
+        getKoin().getAll<RouterFactory>().forEach { factory -> factory.register(this) }
     }
 }
