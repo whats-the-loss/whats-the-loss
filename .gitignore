@@ -840,3 +840,4 @@ cython_debug/
 /docs/.swagger-codegen/
 /docs/.swagger-codegen-ignore
 /docs/index.html
+/core/docs/

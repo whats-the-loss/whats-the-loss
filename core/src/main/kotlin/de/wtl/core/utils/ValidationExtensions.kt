@@ -5,6 +5,7 @@ import io.konform.validation.Valid
 import io.konform.validation.Validation
 import io.konform.validation.ValidationResult
 import io.ktor.server.plugins.requestvalidation.RequestValidationConfig
+import kotlin.reflect.KClass
 import io.ktor.server.plugins.requestvalidation.ValidationResult as KtorValidationResult
 
 fun <T> ValidationResult<T>.toValidationResult(): KtorValidationResult = when (this) {
@@ -14,6 +15,6 @@ fun <T> ValidationResult<T>.toValidationResult(): KtorValidationResult = when (t
 
 fun <T> Validation<T>.toValidationResult(data: T): KtorValidationResult = validate(data).toValidationResult()
 
-inline fun <reified T : Any> RequestValidationConfig.register(validator: Validation<T>) {
-    validate<T>(validator::toValidationResult)
+fun <T : Any> RequestValidationConfig.register(kClass: KClass<T>, validator: Validation<T>) {
+    validate(kClass, validator::toValidationResult)
 }

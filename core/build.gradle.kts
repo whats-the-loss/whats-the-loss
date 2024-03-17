@@ -1,3 +1,4 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jmailen.gradle.kotlinter.tasks.FormatTask
@@ -35,14 +36,11 @@ kotlin {
     }
 }
 
-ksp {
-    arg("autoserviceKsp.verify", "true")
+tasks.withType<ShadowJar>().configureEach {
+    mergeServiceFiles()
 }
 
 dependencies {
-    ksp("dev.zacsweers.autoservice:auto-service-ksp:${libs.versions.autoServiceKsp.get()}")
-    implementation("com.google.auto.service:auto-service-annotations:${libs.versions.autoService.get()}")
-
     // logging
     implementation("io.jstach.rainbowgum:rainbowgum:${libs.versions.rainbowgum.get()}")
     implementation("io.github.microutils:kotlin-logging-jvm:${libs.versions.klogging.get()}")
