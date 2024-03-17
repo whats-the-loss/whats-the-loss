@@ -89,6 +89,11 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("io.mockk:mockk:${libs.versions.mockk.get()}")
     testImplementation(kotlin("test"))
+
+    // testcontainers
+    testImplementation(platform("org.testcontainers:testcontainers-bom:${libs.versions.testcontainers.get()}"))
+    testImplementation("org.testcontainers:mongodb")
+    testImplementation("org.testcontainers:junit-jupiter")
 }
 
 tasks.withType<Test>().configureEach {

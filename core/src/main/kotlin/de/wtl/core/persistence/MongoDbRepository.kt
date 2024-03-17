@@ -16,11 +16,7 @@ interface Identifiable {
 }
 
 @Single
-fun database(config: DatabaseConfig): MongoDatabase {
-    val connectionString = "mongodb://${config.user}:${config.password}@${config.host}:${config.port}"
-
-    return MongoClient.create(connectionString = connectionString).getDatabase(config.database)
-}
+fun database(config: DatabaseConfig) = MongoClient.create(connectionString = config.url).getDatabase(config.database)
 
 interface MongoDbRepository<T : Identifiable> {
     suspend fun create(identifiable: T)
