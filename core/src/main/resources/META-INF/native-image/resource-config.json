@@ -8,13 +8,16 @@
         "pattern": "\\QMETA-INF/native/libnetty_transport_native_epoll_x86_64.so\\E"
       },
       {
+        "pattern": "\\QMETA-INF/services/ch.qos.logback.classic.spi.Configurator\\E"
+      },
+      {
         "pattern": "\\QMETA-INF/services/com.mongodb.spi.dns.InetAddressResolverProvider\\E"
       },
       {
-        "pattern": "\\QMETA-INF/services/io.jstach.rainbowgum.spi.RainbowGumServiceProvider\\E"
+        "pattern": "\\QMETA-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider\\E"
       },
       {
-        "pattern": "\\QMETA-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider\\E"
+        "pattern": "\\QMETA-INF/services/io.ktor.server.config.ConfigLoader\\E"
       },
       {
         "pattern": "\\QMETA-INF/services/java.lang.System$LoggerFinder\\E"
@@ -35,6 +38,9 @@
         "pattern": "\\QMETA-INF/services/java.time.zone.ZoneRulesProvider\\E"
       },
       {
+        "pattern": "\\QMETA-INF/services/javax.xml.parsers.SAXParserFactory\\E"
+      },
+      {
         "pattern": "\\QMETA-INF/services/kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoader\\E"
       },
       {
@@ -51,6 +57,9 @@
       },
       {
         "pattern": "\\QMETA-INF/services/org.slf4j.spi.SLF4JServiceProvider\\E"
+      },
+      {
+        "pattern": "\\Qapplication.conf\\E"
       },
       {
         "pattern": "\\Qcommons-logging.properties\\E"
@@ -80,6 +89,18 @@
         "pattern": "\\Qkotlin/reflect/reflect.kotlin_builtins\\E"
       },
       {
+        "pattern": "\\Qlogback-test.scmo\\E"
+      },
+      {
+        "pattern": "\\Qlogback-test.xml\\E"
+      },
+      {
+        "pattern": "\\Qlogback.scmo\\E"
+      },
+      {
+        "pattern": "\\Qlogback.xml\\E"
+      },
+      {
         "pattern": "\\Qmozilla/public-suffix-list.txt\\E"
       },
       {
@@ -92,7 +113,13 @@
         "pattern": "\\Qorg/fusesource/jansi/jansi.properties\\E"
       },
       {
+        "pattern": "\\Qreference.conf\\E"
+      },
+      {
         "pattern": "java.base:\\Qjdk/internal/icu/impl/data/icudt72b/nfkc.nrm\\E"
+      },
+      {
+        "pattern": "java.base:\\Qsun/net/www/content-types.properties\\E"
       }
     ]
   },

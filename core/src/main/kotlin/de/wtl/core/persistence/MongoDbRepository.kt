@@ -4,6 +4,7 @@ import com.mongodb.client.model.Filters
 import com.mongodb.kotlin.client.coroutine.ChangeStreamFlow
 import com.mongodb.kotlin.client.coroutine.MongoClient
 import com.mongodb.kotlin.client.coroutine.MongoDatabase
+import de.wtl.core.config.DatabaseConfig
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import org.bson.conversions.Bson
@@ -15,7 +16,11 @@ interface Identifiable {
 }
 
 @Single
-fun database() = MongoClient.create(connectionString = "mongodb://rootuser:rootpass@localhost:27017").getDatabase("wtl")
+fun database(config: DatabaseConfig): MongoDatabase {
+    val connectionString = "mongodb://${config.user}:${config.password}@${config.host}:${config.port}"
+
+    return MongoClient.create(connectionString = connectionString).getDatabase(config.database)
+}
 
 interface MongoDbRepository<T : Identifiable> {
     suspend fun create(identifiable: T)

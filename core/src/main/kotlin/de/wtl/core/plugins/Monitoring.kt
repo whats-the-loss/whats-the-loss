@@ -24,7 +24,7 @@ fun Application.configureMonitoring() {
         registry = appMicrometerRegistry
     }
     routing {
-        get("/metrics-micrometer") {
+        get("/metrics") {
             call.respond(appMicrometerRegistry.scrape())
         }
     }
