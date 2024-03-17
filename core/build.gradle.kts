@@ -65,6 +65,7 @@ dependencies {
     implementation("io.ktor:ktor-server-host-common-jvm")
     implementation("io.ktor:ktor-server-metrics-micrometer-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
+    implementation("io.ktor:ktor-server-openapi")
     implementation("io.ktor:ktor-server-partial-content-jvm")
     implementation("io.ktor:ktor-server-request-validation")
     implementation("io.ktor:ktor-server-status-pages")
@@ -156,9 +157,10 @@ tasks.withType<FormatTask>().configureEach {
     exclude { fileTreeElement -> "generated/" in fileTreeElement.file.path }
 }
 
+val openapiPath = "${projectDir.parent}/doc/api/openapi.yaml"
 openApiGenerate {
     generatorName = "kotlin"
-    inputSpec = "${projectDir.parent}/doc/api/openapi.yaml"
+    inputSpec = openapiPath
     outputDir = layout.buildDirectory.dir("generated").get().asFile.absolutePath
     skipValidateSpec = true
     globalProperties = mapOf("models" to "")
@@ -170,6 +172,13 @@ openApiGenerate {
     generateModelDocumentation = false
     generateModelTests = false
     cleanupOutput = true
+}
+
+// copy openapi.yaml to resources to be picked up by openapi ktor plugin
+tasks.processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from(file(openapiPath))
+    into("src/main/resources")
 }
 
 tasks.named("openApiGenerate") {
