@@ -837,3 +837,6 @@ cython_debug/
 
 /.idea/
 /api/redoc-static.html
+/docs/.swagger-codegen/
+/docs/.swagger-codegen-ignore
+/docs/index.html
