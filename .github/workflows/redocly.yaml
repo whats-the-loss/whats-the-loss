@@ -1,18 +1,18 @@
-name: Generate API docs
+name: Generate and Publish API docs
+
 on:
   push:
     branches:
       - main
-      - github_actions
 jobs:
-  build:
+  publish_api_to_gh_pages:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-      - name: redocly cli test
+      - name: redocly cli bundle
         uses: fluximus-prime/redocly-cli-github-action@v1
         with:
           args: 'build-docs docs/api/openapi.yaml --output docs/api/index.html'
