@@ -10,7 +10,7 @@ RUN microdnf install --nodocs -y tar gzip findutils
 RUN mkdir -p /opt/gradle/.gradle
 ENV GRADLE_USER_HOME=/opt/gradle/.gradle
 COPY core/ /workspace/app/
-COPY doc/ /workspace/doc/
+COPY docs/ /workspace/docs/
 WORKDIR /workspace/app
 
 RUN --mount=type=cache,target=${GRADLE_USER_HOME}/caches \

@@ -1,0 +1,22 @@
+name: Generate API docs
+on:
+  push:
+    branches:
+      - main
+      - github-actions
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: redocly cli test
+        uses: fluximus-prime/redocly-cli-github-action@v1
+        with:
+          args: 'build-docs docs/api/openapi.yaml --output docs/api/index.html'
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/api
+          publish_branch: gh-pages

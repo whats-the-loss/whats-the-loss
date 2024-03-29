@@ -6,7 +6,7 @@ by [TensorBoard](https://www.tensorflow.org/tensorboard). It consists out of fou
 
 - A [server (core)](core) that can be used to collect and store the data
 - A [web interface (UI)](ui) that can be used to visualize the data
-- [Open API documentation](doc/api) that documents the interaction between the server and the clients
+- [Open API documentation](docs/api) that documents the interaction between the server and the clients
 - A [python sdk](python-sdk) that can be used to log data to the server
 
 ## Getting Started

@@ -8,11 +8,11 @@ plugins {
     id("com.google.devtools.ksp") version libs.versions.ksp.get()
     id("io.ktor.plugin") version libs.versions.ktor.get()
     id("org.graalvm.buildtools.native") version libs.versions.graalvm.get()
-    id("org.jetbrains.kotlin.plugin.serialization") version libs.versions.kotlin.get()
     id("org.jmailen.kotlinter") version libs.versions.kotlinter.get()
     id("org.openapi.generator") version libs.versions.openapiGenerator.get()
     idea
     kotlin("jvm") version libs.versions.kotlin.get()
+    kotlin("plugin.serialization") version libs.versions.kotlin.get()
 }
 
 group = "de.wtl"
@@ -161,7 +161,7 @@ tasks.withType<FormatTask>().configureEach {
 
 openApiGenerate {
     generatorName = "kotlin"
-    inputSpec = "${projectDir.parent}/doc/api/openapi.yaml"
+    inputSpec = "${projectDir.parent}/docs/api/openapi.yaml"
     outputDir = layout.buildDirectory.dir("generated").get().asFile.absolutePath
     skipValidateSpec = true
     globalProperties = mapOf("models" to "")

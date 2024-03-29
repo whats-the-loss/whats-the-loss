@@ -841,3 +841,4 @@ cython_debug/
 /docs/.swagger-codegen-ignore
 /docs/index.html
 /core/docs/
+/docs/api/redoc-static.html
