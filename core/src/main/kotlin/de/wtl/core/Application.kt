@@ -10,12 +10,14 @@ import de.wtl.core.plugins.configureStatusPage
 import de.wtl.core.plugins.configureWebSockets
 import io.ktor.server.application.Application
 import io.ktor.server.netty.EngineMain
+import org.koin.core.module.Module
+import org.koin.ksp.generated.defaultModule
 
 fun main(args: Array<String>) = EngineMain.main(args)
 
-fun Application.module() {
+fun Application.module(module: Module = defaultModule) {
     configureHTTP()
-    configureKoin()
+    configureKoin(module)
     configureMonitoring()
     configureRouting()
     configureSecurity()
