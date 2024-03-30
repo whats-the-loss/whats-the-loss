@@ -1,3 +1,7 @@
+## Deployment
+
+The most up-to-date version of the api can be found at [GitHub Pages](https://whats-the-loss.github.io/whats-the-loss/).
+
 ## Topology
 
 In the following the relation between the basic entities of wtl is shown:
