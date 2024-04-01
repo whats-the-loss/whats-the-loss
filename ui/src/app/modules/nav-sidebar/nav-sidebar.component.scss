@@ -52,4 +52,9 @@
   .nav-active {
     color: #85ced0;
   }
+
+  .disabled {
+    cursor: no-drop;
+    color: grey;
+  }
 }
