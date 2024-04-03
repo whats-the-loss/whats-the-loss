@@ -1,12 +1,15 @@
 [
   {
+    "name": "[Ljava.lang.String;"
+  },
+  {
     "name": "[Lorg.HdrHistogram.DoubleRecorder;"
   },
   {
     "name": "android.os.Build$VERSION"
   },
   {
-    "name": "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+    "name": "ch.qos.logback.classic.PatternLayout",
     "queryAllPublicMethods": true,
     "methods": [
       {
@@ -79,6 +82,15 @@
     ]
   },
   {
+    "name": "ch.qos.logback.classic.pattern.color.HighlightingCompositeConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "ch.qos.logback.classic.util.DefaultJoranConfigurator",
     "methods": [
       {
@@ -94,6 +106,17 @@
       {
         "name": "<init>",
         "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.Layout",
+    "methods": [
+      {
+        "name": "valueOf",
+        "parameterTypes": [
+          "java.lang.String"
+        ]
       }
     ]
   },
@@ -121,7 +144,18 @@
   },
   {
     "name": "ch.qos.logback.core.encoder.LayoutWrappingEncoder",
+    "queryAllPublicMethods": true,
     "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      },
+      {
+        "name": "setLayout",
+        "parameterTypes": [
+          "ch.qos.logback.core.Layout"
+        ]
+      },
       {
         "name": "setParent",
         "parameterTypes": [
@@ -131,13 +165,31 @@
     ]
   },
   {
-    "name": "ch.qos.logback.core.pattern.PatternLayoutEncoderBase",
+    "name": "ch.qos.logback.core.pattern.PatternLayoutBase",
     "methods": [
       {
         "name": "setPattern",
         "parameterTypes": [
           "java.lang.String"
         ]
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.pattern.color.CyanCompositeConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.pattern.color.YellowCompositeConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
       }
     ]
   },
@@ -149,6 +201,15 @@
         "parameterTypes": [
           "java.lang.String"
         ]
+      }
+    ]
+  },
+  {
+    "name": "ch.qos.logback.core.status.NopStatusListener",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
       }
     ]
   },
@@ -278,6 +339,94 @@
     ]
   },
   {
+    "name": "de.wtl.api.model.ErrorResponse",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.ErrorResponse$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunCreateRequest",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunCreateRequest$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunCreateResponse",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunCreateResponse$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunGetResponse",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunGetResponse$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunStatus"
+  },
+  {
+    "name": "de.wtl.api.model.RunUpdateRequest",
+    "fields": [
+      {
+        "name": "Companion"
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.api.model.RunUpdateRequest$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "de.wtl.core.ApplicationKt",
     "queryAllPublicMethods": true,
     "methods": [
@@ -286,10 +435,31 @@
         "parameterTypes": []
       },
       {
+        "name": "main",
+        "parameterTypes": [
+          "java.lang.String[]"
+        ]
+      },
+      {
         "name": "module",
         "parameterTypes": [
           "io.ktor.server.application.Application"
         ]
+      }
+    ]
+  },
+  {
+    "name": "de.wtl.core.run.Run",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true,
+    "queryAllDeclaredConstructors": true
+  },
+  {
+    "name": "de.wtl.core.run.Run$Companion",
+    "methods": [
+      {
+        "name": "serializer",
+        "parameterTypes": []
       }
     ]
   },
@@ -310,7 +480,13 @@
     ]
   },
   {
+    "name": "io.ktor.http.HttpStatusCode"
+  },
+  {
     "name": "io.ktor.server.application.Application"
+  },
+  {
+    "name": "io.ktor.server.application.ApplicationCall"
   },
   {
     "name": "io.ktor.server.netty.NettyApplicationCall",
@@ -429,6 +605,9 @@
     ]
   },
   {
+    "name": "io.ktor.server.plugins.requestvalidation.RequestValidationException"
+  },
+  {
     "name": "io.ktor.util.collections.CopyOnWriteHashMap",
     "fields": [
       {
@@ -452,6 +631,9 @@
         "name": "_writeOp"
       }
     ]
+  },
+  {
+    "name": "io.ktor.utils.io.ByteReadChannel"
   },
   {
     "name": "io.ktor.utils.io.core.internal.ChunkBuffer",
@@ -1118,6 +1300,17 @@
     "queryAllDeclaredMethods": true
   },
   {
+    "name": "io.netty.util.ResourceLeakDetector$DefaultResourceLeak",
+    "fields": [
+      {
+        "name": "droppedRecords"
+      },
+      {
+        "name": "head"
+      }
+    ]
+  },
+  {
     "name": "io.netty.util.concurrent.DefaultPromise",
     "fields": [
       {
@@ -1227,6 +1420,27 @@
     ]
   },
   {
+    "name": "java.lang.Class",
+    "methods": [
+      {
+        "name": "getPermittedSubclasses",
+        "parameterTypes": []
+      },
+      {
+        "name": "getRecordComponents",
+        "parameterTypes": []
+      },
+      {
+        "name": "isRecord",
+        "parameterTypes": []
+      },
+      {
+        "name": "isSealed",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "java.lang.ClassValue"
   },
   {
@@ -1309,6 +1523,15 @@
     "fields": [
       {
         "name": "TYPE"
+      }
+    ]
+  },
+  {
+    "name": "java.lang.annotation.Repeatable",
+    "methods": [
+      {
+        "name": "value",
+        "parameterTypes": []
       }
     ]
   },
@@ -1470,6 +1693,14 @@
     ]
   },
   {
+    "name": "java.util.concurrent.atomic.Striped64$Cell",
+    "fields": [
+      {
+        "name": "value"
+      }
+    ]
+  },
+  {
     "name": "javax.management.ObjectName"
   },
   {
@@ -1499,6 +1730,30 @@
         "parameterTypes": []
       }
     ]
+  },
+  {
+    "name": "kotlin.Array"
+  },
+  {
+    "name": "kotlin.Deprecated",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "level",
+        "parameterTypes": []
+      },
+      {
+        "name": "message",
+        "parameterTypes": []
+      },
+      {
+        "name": "replaceWith",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "kotlin.Int"
   },
   {
     "name": "kotlin.Metadata",
@@ -1539,6 +1794,20 @@
     ]
   },
   {
+    "name": "kotlin.ReplaceWith",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "expression",
+        "parameterTypes": []
+      },
+      {
+        "name": "imports",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
     "name": "kotlin.SafePublicationLazyImpl",
     "fields": [
       {
@@ -1547,7 +1816,20 @@
     ]
   },
   {
+    "name": "kotlin.String"
+  },
+  {
+    "name": "kotlin.Throwable"
+  },
+  {
     "name": "kotlin.Unit"
+  },
+  {
+    "name": "kotlin.collections.Set"
+  },
+  {
+    "name": "kotlin.jvm.JvmStatic",
+    "queryAllDeclaredMethods": true
   },
   {
     "name": "kotlin.jvm.internal.DefaultConstructorMarker"
@@ -1576,14 +1858,6 @@
       },
       {
         "name": "_state"
-      }
-    ]
-  },
-  {
-    "name": "kotlinx.coroutines.CancelledContinuation",
-    "fields": [
-      {
-        "name": "_resumed"
       }
     ]
   },
@@ -1683,6 +1957,9 @@
     ]
   },
   {
+    "name": "kotlinx.coroutines.flow.Flow"
+  },
+  {
     "name": "kotlinx.coroutines.internal.AtomicOp",
     "fields": [
       {
@@ -1759,14 +2036,6 @@
     ]
   },
   {
-    "name": "kotlinx.coroutines.internal.ThreadSafeHeap",
-    "fields": [
-      {
-        "name": "_size"
-      }
-    ]
-  },
-  {
     "name": "kotlinx.coroutines.scheduling.CoroutineScheduler",
     "fields": [
       {
@@ -1806,6 +2075,32 @@
     ]
   },
   {
+    "name": "kotlinx.serialization.SerialName",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "value",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "kotlinx.serialization.Serializable",
+    "queryAllDeclaredMethods": true,
+    "methods": [
+      {
+        "name": "with",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "kotlinx.serialization.internal.SerializationConstructorMarker"
+  },
+  {
+    "name": "kotlinx.serialization.json.JsonObject"
+  },
+  {
     "name": "org.HdrHistogram.AbstractHistogram",
     "fields": [
       {
@@ -1830,6 +2125,12 @@
           "long",
           "long",
           "int"
+        ]
+      },
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.HdrHistogram.AbstractHistogram"
         ]
       }
     ]
@@ -1910,6 +2211,9 @@
   },
   {
     "name": "org.bson.codecs.record.RecordCodecProvider"
+  },
+  {
+    "name": "org.bson.types.ObjectId"
   },
   {
     "name": "org.slf4j.Logger"

@@ -1,0 +1,318 @@
+openapi: 3.0.1
+info:
+  title: Whats the loss API
+  version: 0.0.1
+
+paths:
+  /runs:
+    post:
+      summary: "Add a run"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunCreateRequest'
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    $ref: '#/components/schemas/Id'
+        400:
+          description: "Invalid request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      summary: "Get all runs"
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                title: "RunCreateDtoResponse"
+                type: array
+                items:
+                  $ref: '#/components/schemas/RunGetResponse'
+  /runs/{runId}:
+    put:
+      summary: "Update a run (its status and configuration)"
+      parameters:
+        - name: runId
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/Id"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunUpdateRequest'
+      responses:
+        204:
+          description: "Successful response"
+        400:
+          description: "Invalid request"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        404:
+          description: "Run not found"
+    delete:
+      summary: "Delete a run"
+      parameters:
+        - name: runId
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/Id"
+      responses:
+        204:
+          description: "Successful response"
+#  /runs/{runId}/logSchema:
+#    put:
+#      parameters:
+#        - name: runId
+#          in: path
+#          required: true
+#          schema:
+#            $ref: "#/components/schemas/Id"
+#      summary: "Update the log schema of a run. This includes the datatypes of logged values and their types."
+#      requestBody:
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/RunLogSchema'
+#      responses:
+#        200:
+#          description: "Successful update"
+#
+#  /logging/logValues:
+#    post:
+#      summary: "Add a new log entry of values, optionally linked to a step value"
+#      parameters:
+#        - name: runId
+#          in: path
+#          required: true
+#          schema:
+#            $ref: "#/components/schemas/Id"
+#      requestBody:
+#        content:
+#          application/protobuf:
+#            schema:
+#              type: object
+#              properties:
+#                values:
+#                  type: array
+#                  items:
+#                    oneOf:
+#                      - properties:
+#                          key_flattened:
+#                            type: string
+#                          value:
+#                            type: number
+#                      - properties:
+#                          key_flattened:
+#                            type: string
+#                          value:
+#                            type: array
+#                            items:
+#                              type: number
+#                step:
+#                  type: integer
+#                timestamp:
+#                  type: string
+#                  format: date-time
+#      responses:
+#        200:
+#          description: "Log entry added successfully"
+#
+#  /logging/logMedia:
+#    post:
+#      summary: "Log a media object (image, video), optionally linked to a step value"
+#      parameters:
+#        - name: runId
+#          in: path
+#          required: true
+#          schema:
+#            $ref: "#/components/schemas/Id"
+#        - name: key_flattened
+#          in: query
+#          required: true
+#          schema:
+#            type: string
+#      requestBody:
+#        content:
+#          image/*:
+#            schema:
+#              type: string
+#              format: binary
+#          video/*:
+#            schema:
+#              type: string
+#              format: binary
+#      responses:
+#        200:
+#          description: "Media logged successfully"
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        messages:
+          type: array
+          nullable: false
+          items:
+            type: string
+          required:
+            - messages
+      example:
+        messages:
+          - "Illegal input: Unexpected JSON token at offset 158: Expected start of the object '{', but had ' ' instead at path: $.configuration"
+    Id:
+      title: id
+      description: "A unique identifier based on MongoDB's BSON ObjectId"
+      type: string
+      pattern: ^[0-9a-fA-F]{24}$
+      nullable: false
+      example: "65ed960cb8b50c0c93e89a32"
+    RunCreateRequest:
+      type: object
+      properties:
+        project:
+          type: string
+          description: "project name"
+          nullable: false
+        experiment:
+          type: string
+          description: "experiment name"
+          nullable: false
+        groups:
+          type: array
+          nullable: false
+          uniqueItems: true
+          items:
+            type: string
+        name:
+          type: string
+          nullable: false
+        configuration:
+          type: object
+          nullable: false
+          additionalProperties: true
+      required:
+        - project
+        - experiment
+        - groups
+        - name
+        - configuration
+      example:
+        project: project
+        experiment: experiment
+        name: name
+        groups:
+          - group1
+          - group2
+        configuration:
+          foo: bar
+          fizz: true
+          buzz: 1337
+    RunCreateResponse:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/Id'
+      required:
+        - id
+      example: "65ed960cb8b50c0c93e89a32"
+    RunGetResponse:
+      allOf:
+        - $ref: '#/components/schemas/RunCreateRequest'
+        - $ref: '#/components/schemas/RunCreateResponse'
+        - type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/RunStatus'
+          required:
+            - status
+          example:
+            id: "65ed960cb8b50c0c93e89a32"
+            project: project
+            experiment: experiment
+            name: name
+            status: running
+            groups:
+              - group1
+              - group2
+            configuration:
+              foo: bar
+              fizz: true
+              buzz: 1337
+    RunStatus:
+      type: string
+      enum: [ running, crashed, canceled, finished ]
+    RunUpdateRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/RunStatus'
+        configuration:
+          type: object
+          additionalProperties: true
+      required:
+        - status
+        - configuration
+      example:
+        status: running
+        configuration:
+          foo: bar
+          fizz: true
+          buzz: 1337
+#    RunLogSchema:
+#      type: object
+#      properties:
+#        loggedValues:
+#          type: array
+#          items:
+#            type: object
+#            properties:
+#              key_flattened:
+#                type: string
+#              datatype:
+#                type: string
+#                description: "the actual value data type of the logged data for this key."
+#                enum: [ scalar, vector, image, video, dataframe ]
+#              assigned_type_name:
+#                type: string
+#                description: "links to a user defined type by its name. Note this is like a decorator and not related to the actual datatype of the logged value."
+#        types:
+#          type: array
+#          items:
+#            type: object
+#            properties:
+#              name:
+#                type: string
+#              optimal:
+#                type: string
+#                description: "Is it good/better for a value to be high or low"
+#                enum: [ high, low ]
+#              unit:
+#                type: string
+#        metrics:
+#          type: array
+#          items:
+#            type: object
+#            properties:
+#              key_flattened:
+#                type: string
+#              optimal:
+#                type: string
+#                enum: [ high, low ]
